@@ -1,5 +1,8 @@
 from pytube import Playlist, YouTube
 
+# download directory
+# downloadDestination = '/Users/vijoy.vallachira/Downloads/youtube-videos/CBSE_ClassX_MATHS_13_SAV/'
+downloadDestination = '/Users/vijoy.vallachira/LearningZone/VoiceRecongnitionProto/Videos/'
 
 # To Download a single video
 def download_video():
@@ -24,9 +27,6 @@ def download_playlist() :
     pl.download_all(downloadDestination)
 
     return
-
-# download directory
-downloadDestination = '/Users/vijoy.vallachira/Downloads/youtube-videos'
 
 print("Downlaod a Single [V]ideo OR [P]laylist? [V or P] : ")
 option = input()
