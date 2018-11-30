@@ -76,7 +76,7 @@ def enrollVerificationProfile():
 '''
     4. Get all registered users.
 '''
-def enrollmentVerificationPhrases():
+def getAllEnrolledUsers():
     params = urllib.parse.urlencode({
     })
 
