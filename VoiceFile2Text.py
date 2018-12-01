@@ -4,7 +4,7 @@ import pyaudio
 import wave
 import speech_recognition as sr
 
-AUDIO_FILE = "./voice-files/microphone-results.wav"
+AUDIO_FILE = "./voice-files/predefined-parameterised-recording.wav"
 
 def main() :
 
@@ -38,7 +38,7 @@ def PlayWavFile():
     p = pyaudio.PyAudio()
 
     print("\n<<< Audio File Properties >>>")
-    print("format = {0} \nchannels = {1} \nrate = {2}", p.get_format_from_width(f.getsampwidth()), f.getnchannels(), f.getframerate())
+    print("format = {0} \nchannels = {1} \nrate = {2}" .format(p.get_format_from_width(f.getsampwidth()), f.getnchannels(), f.getframerate()))
 
     # open stream
     stream = p.open(format=p.get_format_from_width(f.getsampwidth()),
