@@ -1,41 +1,64 @@
+#!/usr/bin/env python3
+
 from pytube import Playlist, YouTube
 
 # download directory
-# downloadDestination = '/Users/vijoy.vallachira/Downloads/youtube-videos/CBSE_ClassX_MATHS_13_SAV/'
-downloadDestination = '/Users/vijoy.vallachira/LearningZone/VoiceRecongnitionProto/Videos/'
+download_destination = 'H:/YouTubeDump'
 
-# To Download a single video
+
+# To download a single video
 def download_video():
-
-    youtubeVideoSource = input("Enter Youtube Video URL : ")
-
-    yt = YouTube(youtubeVideoSource).streams.filter(subtype='mp4').first()
-
-    print("downloading Video " + str(yt))
-    yt.download(downloadDestination)
+    youtube_video_source = input("Enter Youtube Video URL : ")
+    yt_stream = YouTube(youtube_video_source).streams.filter(mime_type="video/mp4").first()
+    print("Downloading %s" % yt_stream)
+    yt_stream.download(download_destination, "myFile01.mp4", "unAcademy")
 
     return
+
 
 # To download entire Playlist
-def download_playlist() :
+def download_playlist():
+    youtube_playlist = input("Enter Youtube Playlist URL : ")
+    pl = Playlist(youtube_playlist)
+    pl.populate_video_urls()
+    print('Title of the playlist: %s' % pl.title())
+    print('Number of videos in playlist: %s' % len(pl.video_urls))
+    pl_video_list = pl.video_urls
+    print("Downloading Playlist Videos \n")
 
-    youtubePlaylist = input("Enter Youtube Playlist URL : ")
-    pl = Playlist(youtubePlaylist)
+    # printing the list using loop
+    for x in range(len(pl_video_list)):
+        print(str(x) + " >> " + pl_video_list[x])
+        individual_video_stream = YouTube(pl_video_list[x]).streams.filter(mime_type="video/mp4").first()
+        individual_video_stream.download(download_destination, "PhysicsSession"+str(x), "unAcademy-ClassXI-JEE")
 
-    # or if you want to download in a specific directory
-    print("downloading Playlist " + str(pl))
-    pl.download_all(downloadDestination)
+    # print(*pl_video_list, sep="\n")
+    # pl.download_all(download_destination)
 
     return
 
-print("Downlaod a Single [V]ideo OR [P]laylist? [V or P] : ")
-option = input()
 
-if option=='V' :
+def display_video_streams():
+    youtube_video_source = input("Enter Youtube Video URL : ")
+
+    yt_video_list = YouTube(youtube_video_source).streams.all()
+
+    print(*yt_video_list, sep="\n")
+
+    return
+
+
+option = input("Download a Single [V]ideo OR [P]laylist OR  [Di]splay available Videos? [D, V or P] : ")
+download_destination = input("Download Directory : ")
+
+
+if option == 'V':
     download_video()
-elif option=='P' :
+elif option == 'P':
     download_playlist()
-else :
-    print("Invalid Option...! Only 'V' or 'P' allowed.....")
+elif option == "D":
+    display_video_streams()
+else:
+    print("Invalid Option...! Only 'D', 'V' or 'P' allowed.....")
 
-print ("Good Bye!")
+print("Good Bye!")
