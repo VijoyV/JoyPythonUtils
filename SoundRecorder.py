@@ -9,8 +9,9 @@ https://www.get-metadata.com/
 
 """
 
-import pyaudio
 import wave
+
+import pyaudio
 
 """ Audio Parameter Setting
 

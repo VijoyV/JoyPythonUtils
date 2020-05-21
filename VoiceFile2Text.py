@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-import pyaudio
 import wave
+
+import pyaudio
 import speech_recognition as sr
 
 AUDIO_FILE = "./voice-files/predefined-parameterised-recording.wav"

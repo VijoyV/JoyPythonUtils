@@ -3,7 +3,7 @@
 from pytube import Playlist, YouTube
 
 # download directory
-download_destination = 'H:/YouTubeDump'
+download_destination = '~/YouTubeDump'
 
 
 # To download a single video
@@ -49,7 +49,7 @@ def display_video_streams():
 
 
 option = input("Download a Single [V]ideo OR [P]laylist OR  [Di]splay available Videos? [D, V or P] : ")
-download_destination = input("Download Directory : ")
+# download_destination = input("Download Directory : ")
 
 
 if option == 'V':
