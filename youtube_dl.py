@@ -3,16 +3,19 @@
 from pytube import Playlist, YouTube
 
 # download directory
-download_destination = '~/YouTubeDump'
+download_destination = '/Users/vijoy.vallachira/YouTubeDump'
 
 
 # To download a single video
 def download_video():
     youtube_video_source = input("Enter Youtube Video URL : ")
-    yt_stream = YouTube(youtube_video_source).streams.filter(mime_type="video/mp4").first()
-    print("Downloading %s" % yt_stream)
-    yt_stream.download(download_destination, "myFile01.mp4", "unAcademy")
 
+    # Downloading the highest resolution, progressive type video.
+    print("Downloading %s" % youtube_video_source)
+    YouTube(youtube_video_source).streams.get_highest_resolution().download(download_destination)
+
+    ## YouTube(youtube_video_source).streams.filter(progressive=True, file_extension='mp4').order_by('resolution')[-1].download()
+    
     return
 
 
@@ -39,11 +42,10 @@ def download_playlist():
 
 
 def display_video_streams():
-    youtube_video_source = input("Enter Youtube Video URL : ")
+    youtube_video_source = input("Enter Youtube URL : ")
 
-    yt_video_list = YouTube(youtube_video_source).streams.all()
-
-    print(*yt_video_list, sep="\n")
+    yt=YouTube(youtube_video_source)
+    print(yt.streams)
 
     return
 
