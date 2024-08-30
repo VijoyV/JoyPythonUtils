@@ -1,0 +1,8 @@
+pytube~=15.0.0
+opencv-python~=4.10.0.8
+moviepy~=1.0.3
+googletrans~=4.0.0rc1
+pillow~=10.3.0
+numpy~=1.26.4
+gTTS~=2.5.3
+pydub~=0.25.1

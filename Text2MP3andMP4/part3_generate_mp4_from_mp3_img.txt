@@ -1,0 +1,39 @@
+Certainly! You can first create an MP4 video without burning in the subtitles and then use a tool like VLC to display the subtitles separately when playing the video. Here’s how you can do that:
+
+Step 1: Create the MP4 Video without Subtitles
+
+Use FFmpeg to combine your image and audio into an MP4 file without including subtitles:
+
+ffmpeg -loop 1 -i "C:\LogosQuiz_Preparation\Judges\Split_Files\Judges_Chapter_00.png" ^
+       -i "C:\LogosQuiz_Preparation\Judges\Split_Files\Judges_Chapter_00.mp3" ^
+       -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest ^
+       "C:\LogosQuiz_Preparation\Judges\Split_Files\Judges_Chapter_00.mp4"
+
+ffmpeg -loop 1 -i "C:\LogosQuiz_Preparation\Judges\Split_Files\Judges_Chapter_01.png" ^
+       -i "C:\LogosQuiz_Preparation\Judges\Split_Files\Judges_Chapter_01.mp3" ^
+       -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest ^
+       "C:\LogosQuiz_Preparation\Judges\Split_Files\Judges_Chapter_01.mp4"
+
+
+Step 2: Use VLC to Display Subtitles
+
+Open VLC Media Player: If you don't have VLC installed, you can download it from the official website.
+
+Play the Video:
+
+Open VLC and drag the generated MP4 file (Judges_Chapter_00_no_subtitles.mp4) into VLC.
+Load Subtitles:
+
+Go to Subtitle > Add Subtitle File... and select your SRT file (Judges_Chapter_00.srt).
+VLC will automatically sync the subtitles with your video during playback.
+Step 3: Automatically Load Subtitles in VLC
+If you want VLC to automatically load the subtitles when you open the video, ensure the SRT file is named exactly the same as the video file and placed in the same directory:
+
+Video file: Judges_Chapter_00_no_subtitles.mp4
+Subtitle file: Judges_Chapter_00_no_subtitles.srt
+When both files are named the same (except for the extension) and are in the same folder, VLC will automatically use the subtitle file when playing the video.
+
+Optional: Generate Subtitles from Speech
+If you want to generate subtitles from speech automatically, you can use a tool like autosub or online services like Google Cloud's Speech-to-Text. These tools can convert speech in the audio to text and generate an SRT file.
+
+However, since you already have an SRT file, using VLC to display the subtitles should suffice. This approach gives you flexibility and avoids issues with hardcoding the subtitles into the video.
