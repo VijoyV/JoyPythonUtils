@@ -1,4 +1,4 @@
-# VijUtils4Internet
+# JoyPythonUtils
 Various Quick and Dirty Python Utilities
 
 1. SoundRecorder.py
