@@ -1,0 +1,14 @@
+# Python environment and IDE files
+venv/
+.idea/
+.pycharm_helpers/
+.vscode/
+
+# Specific file extensions
+*.ppt
+*.txt
+*.pdf
+*.png
+*.jpeg
+*.mp3
+*.mp4

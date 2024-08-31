@@ -1,6 +1,6 @@
 import win32com.client
 import os
-from win32com.client import constants as cte  # Import PowerPoint constants
+
 
 
 def calculate_advance_time(text_length):
@@ -20,7 +20,7 @@ def calculate_advance_time(text_length):
     return advance_time
 
 
-def create_presentation_with_transitions(input_pptx_path, output_pptx_path, transition_effect="Push"):
+def create_presentation_with_transitions(input_pptx_path, output_pptx_path):
     """
     Creates a new PowerPoint presentation with specified transitions and animations.
 

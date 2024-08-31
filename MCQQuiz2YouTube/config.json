@@ -1,0 +1,13 @@
+{
+  "all_slides_title": "Judges : Chapter 04",
+  "mcq_file_path": "./input/Judges_Chapter_04_MCQ.txt",
+  "watermark_path": "./input/BG_4_All_Slides_01.png",
+  "first_slide_bg": "./input/Judges_PPT_Beg.jpg",
+  "last_slide_bg": "./input/Judges_PPT_End.png",
+  "first_slide_title_text": "Logos Bible Quiz 2024",
+  "first_slide_subtitle_text": "Judges - Chapter 04: Important Questions",
+  "last_slide_message": "Thank you for watching this video! Please subscribe to the channel for more videos like this.",
+  "ppt_output_path_v1": "./output/Judges_Chapter_04_MCQ_V1.pptx",
+  "ppt_output_path_v2": "./output/Judges_Chapter_04_MCQ_V2.pptx",
+  "slide_mp3_narration_dir" : "./narration-mp3"
+}
