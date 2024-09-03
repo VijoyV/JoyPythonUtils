@@ -6,6 +6,7 @@ venv/
 
 # Specific file extensions
 *.ppt
+*.pptx
 *.txt
 *.pdf
 *.png

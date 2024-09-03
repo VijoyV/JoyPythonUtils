@@ -2,6 +2,7 @@ import json
 from pptx import Presentation
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
+from pptx.enum.shapes import MSO_SHAPE_TYPE
 
 # Function to load the configuration from a JSON file
 def load_config(config_file):
@@ -32,7 +33,7 @@ def parse_mcqs(file_path):
     mcq = {}
     for line in lines:
         line = line.strip()
-        if line.startswith("Question"):
+        if line.startswith("Question:"):
             if mcq:
                 mcqs.append(mcq)
                 mcq = {}
@@ -70,6 +71,13 @@ def add_slide(prs, mcq, index, slide_title, watermark_path):
     title.text = slide_title
     set_font_properties(title, 36, RGBColor(102, 55, 104))
 
+    # Check the shape type
+    # if title_box.shape_type == MSO_SHAPE_TYPE.TEXT_BOX:
+    #     print("The shape of Title Box is a TextBox.")
+    # else:
+    #     print(f"The shape of Title Box is not a TextBox, it is of type {title_box.shape_type}")
+
+
     # Add question
     question_box = slide.shapes.add_textbox(Inches(1), Inches(1), Inches(12), Inches(3))
     question_frame = question_box.text_frame
@@ -77,6 +85,13 @@ def add_slide(prs, mcq, index, slide_title, watermark_path):
     p = question_frame.add_paragraph()
     p.text = f"Question - {index + 1}: {mcq['question']}"
     set_font_properties(p, 24, RGBColor(0, 102, 224))
+
+    # Check the shape type
+    # if question_box.shape_type == MSO_SHAPE_TYPE.TEXT_BOX:
+    #     print("The shape of Question Box is a TextBox.")
+    # else:
+    #     print(f"The shape of Question Box is not a TextBox, it is of type {question_box.shape_type}")
+
 
     # Add options
     options_box = slide.shapes.add_textbox(Inches(1), Inches(3), Inches(12), Inches(3))
@@ -88,6 +103,12 @@ def add_slide(prs, mcq, index, slide_title, watermark_path):
         p.level = 0
         set_font_properties(p, 24)
 
+    # Check the shape type
+    # if options_box.shape_type == MSO_SHAPE_TYPE.TEXT_BOX:
+    #     print("The shape of Options Box is a TextBox.")
+    # else:
+    #     print(f"The shape of Options Box is not a TextBox, it is of type {options_box.shape_type}")
+
     # Add answer
     answer_box = slide.shapes.add_textbox(Inches(1), Inches(6), Inches(12), Inches(1))
     answer_frame = answer_box.text_frame
@@ -95,6 +116,12 @@ def add_slide(prs, mcq, index, slide_title, watermark_path):
     p = answer_frame.add_paragraph()
     p.text = f"Answer: {mcq['answer']}"
     set_font_properties(p, 24, RGBColor(0, 102, 204))
+
+    # Check the shape type
+    # if answer_box.shape_type == MSO_SHAPE_TYPE.TEXT_BOX:
+    #     print("The shape of Answer Box is a TextBox.")
+    # else:
+    #     print(f"The shape of Answer Box is not a TextBox, it is of type {answer_box.shape_type}")
 
 # Function to add a background image to a slide
 def add_background_image(slide, image_path, prs):
@@ -104,7 +131,7 @@ def add_background_image(slide, image_path, prs):
 
 # Function to add the first slide
 def add_first_slide(prs, background_image_path, title_text, subtitle_text):
-    first_slide_layout = prs.slide_layouts[5]  # Use a blank slide layout
+    first_slide_layout = prs.slide_layouts[6]  # Use a blank slide layout
     first_slide = prs.slides.add_slide(first_slide_layout)
     add_background_image(first_slide, background_image_path, prs)
 
@@ -133,7 +160,7 @@ def add_first_slide(prs, background_image_path, title_text, subtitle_text):
 
 # Function to add the last slide
 def add_last_slide(prs, background_image_path, last_slide_message):
-    last_slide_layout = prs.slide_layouts[5]  # Use a blank slide layout
+    last_slide_layout = prs.slide_layouts[6]  # Use a blank slide layout
     last_slide = prs.slides.add_slide(last_slide_layout)
     add_background_image(last_slide, background_image_path, prs)
 

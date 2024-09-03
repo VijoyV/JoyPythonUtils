@@ -4,7 +4,7 @@ from pytube import Playlist, YouTube
 download_path = "C:\\Users\\vijoy\\Downloads\\YouTubeVideos"
 
 # URL of the YouTube playlist or Video
-url = "https://www.youtube.com/playlist?list=PLdPQQOxV3l0_11bBrgSX5CCb0YtcBGhhA"
+url = "https://www.youtube.com/watch?v=HaAi2cTAYVE"
 
 def download_captions(yt, output_path):
     # Download closed captions
