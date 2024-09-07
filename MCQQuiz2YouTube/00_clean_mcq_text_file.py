@@ -1,20 +1,26 @@
 import re
 
+import re
+
+pattern = r"(\d+\s*)?(Question\s*)(\d+\s*)?"
+
+def remove_question_number(text):
+  return re.sub(pattern, r"\2", text)
+
 def clean_quiz_file(input_file, output_file):
     try:
         with open(input_file, 'r', encoding='utf-8') as f:
             lines = f.readlines()
 
         cleaned_lines = []
-        question_pattern = re.compile(r'^\d+\.\s*')  # Pattern to match any existing number and period at the start
 
         for line in lines:
             # Remove leading spaces and asterisks
             cleaned_line = line.strip().replace("**", "")
 
             # Renumber the question, stripping any existing numbering
-            if "Question:" in cleaned_line:
-                cleaned_line = question_pattern.sub("", cleaned_line)  # Remove existing numbering
+            if "Question" in cleaned_line:
+                cleaned_line = remove_question_number(cleaned_line)  # Remove existing numbering
                 # cleaned_line = f"{cleaned_line.replace('Question:', 'Question: ')}"
             # Remove leading '- ' if it exists
             elif cleaned_line.startswith('- '):
@@ -38,5 +44,5 @@ def clean_quiz_file(input_file, output_file):
 
 # Replace 'your_input_file.txt' with the actual file name you want to process
 input_file = './input/MCQ_Input.txt'
-output_file = './input/Judges_Chapter_07_MCQ.txt'
+output_file = './input/Sirach_Chapter_38_MCQ.txt'
 clean_quiz_file(input_file, output_file)

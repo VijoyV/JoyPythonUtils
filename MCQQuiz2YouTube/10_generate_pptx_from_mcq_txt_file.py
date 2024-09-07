@@ -182,7 +182,7 @@ def generate_ppt_with_first_last_slides(config):
     prs.slide_height = Inches(7.5)
 
     # Add first slide at the beginning
-    add_first_slide(prs, config['first_slide_bg'], config['first_slide_title_text'], config['first_slide_subtitle_text'])
+    # add_first_slide(prs, config['first_slide_bg'], config['first_slide_title_text'], config['first_slide_subtitle_text'])
 
     # Parse MCQs from the text file
     mcqs = parse_mcqs(config['mcq_file_path'])
@@ -192,7 +192,7 @@ def generate_ppt_with_first_last_slides(config):
         add_slide(prs, mcq, index, config['all_slides_title'], config['watermark_path'])
 
     # Add last slide at the end
-    add_last_slide(prs, config['last_slide_bg'], config['last_slide_message'])
+    # add_last_slide(prs, config['last_slide_bg'], config['last_slide_message'])
 
     # Save the PowerPoint presentation
     prs.save(config['ppt_output_path_v1'])

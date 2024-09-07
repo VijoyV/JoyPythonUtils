@@ -1,4 +1,5 @@
 import os
+import time
 import json
 from gtts import gTTS
 from pptx import Presentation
@@ -19,7 +20,7 @@ def load_config(config_file):
 
 def generate_tts(text, output_file):
     """Generate speech from text and save it as an MP3 file."""
-    tts = gTTS(text=text, lang='en')
+    tts = gTTS(text=text, lang='en-IN')
     tts.save(output_file)
     print(f"Generated TTS audio file: {output_file}")
 
@@ -75,9 +76,9 @@ def process_presentation_for_tts(config):
             print(f"No text found in shape 5 on slide {i + 1}.")
             continue
 
-        # Create a 3-second silence
-        silence_1 = AudioSegment.silent(duration=2000)  # 2 seconds
-        silence_2 = AudioSegment.silent(duration=1500)  # 1.5 seconds
+        # Create a 3 and 2 seconds silence before and after answer.
+        silence_1 = AudioSegment.silent(duration=3000)  # 3 seconds
+        silence_2 = AudioSegment.silent(duration=2000)  # 2 seconds
 
         # Combine the TTS audio files and silence
         narration_audio_3_4 = AudioSegment.from_mp3(audio_file_3_4)
@@ -89,9 +90,13 @@ def process_presentation_for_tts(config):
         combined_audio.export(combined_audio_file, format="mp3")
         print(f"Combined TTS audio file: {combined_audio_file}")
 
+        time.sleep(3)
+
         # Optionally, remove the intermediate files
         os.remove(audio_file_3_4)
         os.remove(audio_file_5)
+
+
 
 if __name__ == "__main__":
     # Load configuration
