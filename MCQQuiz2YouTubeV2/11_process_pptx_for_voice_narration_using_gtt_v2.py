@@ -64,7 +64,7 @@ def process_slide(slide_no, slide, narration_output_dir):
             audio_files.append(audio_file)
 
     # Combine with 5-second silences between texts
-    silence_duration = 5000  # 5 seconds silence
+    silence_duration = 2000  # 2 seconds silence
     if audio_files:
         combined_audio_file = os.path.join(narration_output_dir, f"slide_{slide_no + 1}_narration.mp3")
         add_silence_and_combine(audio_files, silence_duration, combined_audio_file)

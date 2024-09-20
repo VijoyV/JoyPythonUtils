@@ -17,7 +17,7 @@ def loop_background_music(background_music, video_duration, fade_duration=3):
     looped_music = concatenate_audioclips(music_clips).subclip(0, video_duration)
     return looped_music
 
-def add_background_music(video_file, background_music_file, output_file, music_volume=0.2, fade_duration=3):
+def add_background_music(video_file, background_music_file, output_file, music_volume=0.1, fade_duration=5):
     # Load the video and the background music
     video_clip = VideoFileClip(video_file)
     background_music = AudioFileClip(background_music_file).volumex(music_volume)

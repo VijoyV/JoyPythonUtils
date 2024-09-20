@@ -100,7 +100,7 @@ def process_presentation_for_tts(config):
 
 if __name__ == "__main__":
     # Load configuration
-    config_file = 'config.json'
+    config_file = '../config.json'
     config = load_config(config_file)
     if config is None:
         exit(1)  # Exit if config could not be loaded

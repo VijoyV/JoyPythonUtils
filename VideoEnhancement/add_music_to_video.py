@@ -1,8 +1,8 @@
 import moviepy.editor as mpy
 
 # Load the video and audio files
-video_path = 'C:\\SocialMediaWorkshop\\Human_Desires.mp4'  # Replace with the path to your video file
-audio_path = 'C:\\SocialMediaWorkshop\\dawnofchange.mp3'  # Replace with the path to your audio file
+video_path = './Throwing Two Dice.mp4'  # Replace with the path to your video file
+audio_path = 'C:\\SocialMediaWorkshop\\Stock_Music\\Helium - TrackTribe.mp3'  # Replace with the path to your audio file
 
 # Load the video and audio
 video_clip = mpy.VideoFileClip(video_path)
@@ -16,7 +16,7 @@ background_music = background_music.audio_fadeout(fade_duration)
 final_video = video_clip.set_audio(background_music)
 
 # Export the final video
-output_path = 'C:\\SocialMediaWorkshop\\Human_Desires_V1.mp4'  # Replace with the desired output path
-final_video.write_videofile(output_path, fps=24)
+output_path = './Throwing Two Dice with Music.mp4'  # Replace with the desired output path
+final_video.write_videofile(output_path, fps=30)
 
-print("Video with background music and fade-out effect has been created successfully!")
+print(f"Video with background music and fade-out effect has been created successfully: {output_path}!")
