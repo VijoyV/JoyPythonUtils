@@ -44,5 +44,5 @@ def clean_quiz_file(input_file, output_file):
 
 # Replace 'your_input_file.txt' with the actual file name you want to process
 input_file = './input/MCQ_Input.txt'
-output_file = './input/Luke_Chapter_11_MCQ.txt'
+output_file = './input/Luke_Chapter_16_MCQ.txt'
 clean_quiz_file(input_file, output_file)

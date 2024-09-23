@@ -1,0 +1,167 @@
+{
+  "files": [
+    {
+      "file_path": "./input/Judges_Chapter_01_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Judges Chapter 01"
+    },
+    {
+      "file_path": "./input/Judges_Chapter_02_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Judges Chapter 02"
+    },
+    {
+      "file_path": "./input/Judges_Chapter_03_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Judges Chapter 03"
+    },
+    {
+      "file_path": "./input/Judges_Chapter_04_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Judges Chapter 04"
+    },
+    {
+      "file_path": "./input/Judges_Chapter_05_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Judges Chapter 05"
+    },
+    {
+      "file_path": "./input/Judges_Chapter_06_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Judges Chapter 06"
+    },
+    {
+      "file_path": "./input/Judges_Chapter_07_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Judges Chapter 07"
+    },
+    {
+      "file_path": "./input/Judges_Chapter_08_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Judges Chapter 08"
+    },
+    {
+      "file_path": "./input/Judges_Chapter_09_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Judges Chapter 09"
+    },
+    {
+      "file_path": "./input/Judges_Chapter_10_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Judges Chapter 10"
+    },
+    {
+      "file_path": "./input/Luke_Chapter_09_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Luke Chapter 09"
+    },
+    {
+      "file_path": "./input/Luke_Chapter_10_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Luke Chapter 10"
+    },
+    {
+      "file_path": "./input/Luke_Chapter_11_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Luke Chapter 11"
+    },
+    {
+      "file_path": "./input/Luke_Chapter_12_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Luke Chapter 12"
+    },
+    {
+      "file_path": "./input/Luke_Chapter_13_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Luke Chapter 13"
+    },
+    {
+      "file_path": "./input/Luke_Chapter_14_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Luke Chapter 14"
+    },
+    {
+      "file_path": "./input/Luke_Chapter_15_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Luke Chapter 15"
+    },
+    {
+      "file_path": "./input/Luke_Chapter_16_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Luke Chapter 16"
+    },
+    {
+      "file_path": "./input/2-Corinthians_Chapter_07_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "2-Corinthians Chapter 07"
+    },
+        {
+      "file_path": "./input/2-Corinthians_Chapter_08_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "2-Corinthians Chapter 08"
+    },
+    {
+      "file_path": "./input/2-Corinthians_Chapter_09_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "2-Corinthians Chapter 09"
+    },
+    {
+      "file_path": "./input/2-Corinthians_Chapter_10_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "2-Corinthians Chapter 10"
+    },
+    {
+      "file_path": "./input/2-Corinthians_Chapter_11_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "2-Corinthians Chapter 11"
+    },
+    {
+      "file_path": "./input/2-Corinthians_Chapter_12_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "2-Corinthians Chapter 12"
+    },
+    {
+      "file_path": "./input/2-Corinthians_Chapter_13_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "2-Corinthians Chapter 13"
+    },
+    {
+      "file_path": "./input/Sirach_Chapter_34_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Sirach Chapter 34"
+    },
+    {
+      "file_path": "./input/Sirach_Chapter_35_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Sirach Chapter 35"
+    },
+    {
+      "file_path": "./input/Sirach_Chapter_36_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Sirach Chapter 36"
+    },
+    {
+      "file_path": "./input/Sirach_Chapter_37_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Sirach Chapter 37"
+    },
+    {
+      "file_path": "./input/Sirach_Chapter_38_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Sirach Chapter 38"
+    },
+    {
+      "file_path": "./input/Sirach_Chapter_39_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Sirach Chapter 39"
+    },
+    {
+      "file_path": "./input/Sirach_Chapter_40_MCQ.txt",
+      "subject": "Bible Logos Quiz 2024",
+      "topic": "Sirach Chapter 40"
+    }
+  ],
+  "text_language": "en",
+  "created_by": "QuizMaster",
+  "created_updated_on": "2024-09-22"
+}

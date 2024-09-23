@@ -1,8 +1,9 @@
 import json
+
 from pptx import Presentation
-from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
-from pptx.enum.shapes import MSO_SHAPE_TYPE
+from pptx.util import Inches, Pt
+
 
 # Function to load the configuration from a JSON file
 def load_config(config_file):
@@ -16,6 +17,7 @@ def load_config(config_file):
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
         return None
+
 
 # Function to parse MCQs from a text file
 def parse_mcqs(file_path):
@@ -48,11 +50,13 @@ def parse_mcqs(file_path):
         mcqs.append(mcq)
     return mcqs
 
+
 # Function to set font properties for text paragraphs
 def set_font_properties(paragraph, size, color=None):
     paragraph.font.size = Pt(size)
     if color:
         paragraph.font.color.rgb = color
+
 
 # Function to add a slide with an MCQ to the presentation
 def add_slide(prs, mcq, index, slide_title, watermark_path):
@@ -77,7 +81,6 @@ def add_slide(prs, mcq, index, slide_title, watermark_path):
     # else:
     #     print(f"The shape of Title Box is not a TextBox, it is of type {title_box.shape_type}")
 
-
     # Add question
     question_box = slide.shapes.add_textbox(Inches(1.1), Inches(1), Inches(10), Inches(2))
     question_frame = question_box.text_frame
@@ -91,7 +94,6 @@ def add_slide(prs, mcq, index, slide_title, watermark_path):
     #     print("The shape of Question Box is a TextBox.")
     # else:
     #     print(f"The shape of Question Box is not a TextBox, it is of type {question_box.shape_type}")
-
 
     # Add options
     options_box = slide.shapes.add_textbox(Inches(1.1), Inches(3.5), Inches(10), Inches(3))
@@ -123,11 +125,13 @@ def add_slide(prs, mcq, index, slide_title, watermark_path):
     # else:
     #     print(f"The shape of Answer Box is not a TextBox, it is of type {answer_box.shape_type}")
 
+
 # Function to add a background image to a slide
 def add_background_image(slide, image_path, prs):
     slide_width = prs.slide_width
     slide_height = prs.slide_height
     slide.shapes.add_picture(image_path, 0, 0, slide_width, slide_height)
+
 
 # Function to generate the PowerPoint with MCQs, first and last slides
 def generate_ppt_with_mcqs(config):
@@ -148,6 +152,7 @@ def generate_ppt_with_mcqs(config):
     prs.save(config['ppt_output_path_v1'])
     print(f"PowerPoint presentation saved as {config['ppt_output_path_v1']}")
 
+
 def main():
     # Load configuration
     config_file = 'config.json'
@@ -158,6 +163,7 @@ def main():
 
     # Generate PowerPoint presentation with the loaded configuration
     generate_ppt_with_mcqs(config)
+
 
 if __name__ == "__main__":
     main()

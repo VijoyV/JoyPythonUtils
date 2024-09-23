@@ -1,0 +1,51 @@
+{
+  "background_image": "./images/bg_all_slides.png",
+  "start_slide": "./images/judges_cover.png",
+  "end_slide": "./images/common-end-slide.png",
+  "wide_aspect_ratio": {
+    "width": 1920,
+    "height": 1080
+  },
+  "working_slide_path": "./working-slides",
+  "slide_durations": {
+    "start_slide": 5,
+    "question_slide": 12,
+    "answer_slide": 3,
+    "end_slide": 10
+  },
+  "font_path_question": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_path_options": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_path_answer": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_settings": {
+    "font_size_question": 72,
+    "font_color_question": [
+      20,
+      20,
+      20
+    ],
+    "font_size_options": 72,
+    "font_color_options": [
+      20,
+      20,
+      180
+    ],
+    "font_size_answer": 72,
+    "font_color_answer": [
+      180,
+      20,
+      20
+    ]
+  },
+  "text_wrap_width": 46,
+  "subject": "Bible Logos Quiz 2024",
+  "topics": [
+    "Judges Chapter 01"
+  ],
+  "background_music": [
+    "./bg-music/Helium - TrackTribe.mp3",
+    "./bg-music/Interstellar Mood - Nico Staf.mp3",
+    "./bg-music/Slow Times Over Here - Midnight North.mp3"
+  ],
+  "output_video": "./output/Judges_01-03.mp4"
+}
+

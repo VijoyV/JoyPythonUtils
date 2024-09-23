@@ -1,12 +1,12 @@
 {
-  "all_slides_title": "St. Luke : Chapter 11",
-  "mcq_file_path": "./input/Luke_Chapter_11_MCQ.txt",
+  "all_slides_title": "St. Luke : Chapter 16",
+  "mcq_file_path": "./input/Luke_Chapter_16_MCQ.txt",
   "watermark_path": "./bg-images/BG_for_All_Slides.png",
-  "ppt_output_path_v1": "./output/Luke_Chapter_11_MCQ_V1.pptx",
-  "ppt_output_path_v2": "./output/Luke_Chapter_11_MCQ_V2.pptx",
+  "ppt_output_path_v1": "./output/Luke_Chapter_16_MCQ_V1.pptx",
+  "ppt_output_path_v2": "./output/Luke_Chapter_16_MCQ_V2.pptx",
   "slide_mp3_narration_dir" : "./narration-mp3",
-  "input_mp4_video_path" : "./output/Luke_Chapter_11_MCQ_V3.mp4",
-  "background_music_path" : "./bg-music/Helium - TrackTribe.mp3",
-  "final_mp4_video_path" : "./output/Luke_Chapter_11_MCQ_V4.mp4"
+  "input_mp4_video_path" : "./output/Luke_Chapter_16_MCQ_V3.mp4",
+  "background_music_path" : "./bg-music/Smooth and Cool - Nico Staf.mp3",
+  "final_mp4_video_path" : "./output/Luke_Chapter_16_MCQ_V4.mp4"
 }
 

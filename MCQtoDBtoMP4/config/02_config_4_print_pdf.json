@@ -1,0 +1,14 @@
+{
+  "page_config": {
+    "font_name": "Helvetica",
+    "font_size": 14,
+    "lines_per_page": 30
+  },
+  "output_file": "./LogosQuiz-2024_Judges_01-03.pdf",
+  "subject": "Bible Logos Quiz 2024",
+  "topics": [
+    "Judges Chapter 01",
+    "Judges Chapter 02",
+    "Judges Chapter 03"
+  ]
+}
