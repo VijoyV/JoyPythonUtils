@@ -1,0 +1,74 @@
+{
+  "subject": "Bible Logos Quiz 2024",
+  "topics": [
+    {
+      "topic_name": "Luke Chapter 09",
+      "num_questions_per_topic": 30
+    },
+    {
+      "topic_name": "Luke Chapter 10",
+      "num_questions_per_topic": 30
+    },
+        {
+      "topic_name": "Luke Chapter 11",
+      "num_questions_per_topic": 30
+    },
+    {
+      "topic_name": "Luke Chapter 12",
+      "num_questions_per_topic": 32
+    },
+    {
+      "topic_name": "Luke Chapter 13",
+      "num_questions_per_topic": 28
+    },
+    {
+      "topic_name": "Luke Chapter 14",
+      "num_questions_per_topic": 22
+    },
+    {
+      "topic_name": "Luke Chapter 15",
+      "num_questions_per_topic": 20
+    },
+    {
+      "topic_name": "Luke Chapter 16",
+      "num_questions_per_topic": 20
+    }
+  ],
+  "background_audio": "./bg-music/Helium - TrackTribe.mp3",
+  "topic_background_images": {
+    "Luke Chapter 09": "./images/luke/luke_chapter_09_bg.png",
+    "Luke Chapter 10": "./images/luke/luke_chapter_10_bg.png",
+    "Luke Chapter 11": "./images/luke/luke_chapter_11_bg.png",
+    "Luke Chapter 12": "./images/luke/luke_chapter_12_bg.png",
+    "Luke Chapter 13": "./images/luke/luke_chapter_13_bg.png",
+    "Luke Chapter 14": "./images/luke/luke_chapter_14_bg.png",
+    "Luke Chapter 15": "./images/luke/luke_chapter_15_bg.png",
+    "Luke Chapter 16": "./images/luke/luke_chapter_16_bg.png"
+  },
+  "start_slide": "./images/luke/cover-slide.png",
+  "end_slide": "./images/luke/end-slide.png",
+  "wide_aspect_ratio": {
+    "width": 1920,
+    "height": 1080
+  },
+  "working_slide_path": "./working-slides-luke",
+  "slide_durations": {
+    "start_slide": 5,
+    "question_slide": 12,
+    "answer_slide": 3,
+    "end_slide": 10
+  },
+  "font_path_question": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_path_options": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_path_answer": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_settings": {
+    "font_size_question": 56,
+    "font_color_question": [20, 20, 20],
+    "font_size_options": 56,
+    "font_color_options": [20, 20, 180],
+    "font_size_answer": 56,
+    "font_color_answer": [200, 20, 20]
+  },
+  "text_wrap_width": 55,
+  "output_video": "./output/Luke_09-16_200Qs.mp4"
+}

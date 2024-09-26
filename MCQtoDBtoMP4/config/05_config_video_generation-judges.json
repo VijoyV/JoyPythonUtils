@@ -1,0 +1,85 @@
+{
+  "subject": "Bible Logos Quiz 2024",
+  "topics": [
+    {
+      "topic_name": "Judges Chapter 01",
+      "num_questions_per_topic": 17
+    },
+    {
+      "topic_name": "Judges Chapter 02",
+      "num_questions_per_topic": 13
+    },
+        {
+      "topic_name": "Judges Chapter 03",
+      "num_questions_per_topic": 28
+    },
+    {
+      "topic_name": "Judges Chapter 04",
+      "num_questions_per_topic": 15
+    },
+    {
+      "topic_name": "Judges Chapter 05",
+      "num_questions_per_topic": 19
+    },
+    {
+      "topic_name": "Judges Chapter 06",
+      "num_questions_per_topic": 22
+    },
+    {
+      "topic_name": "Judges Chapter 07",
+      "num_questions_per_topic": 27
+    },
+    {
+      "topic_name": "Judges Chapter 08",
+      "num_questions_per_topic": 29
+    },
+    {
+      "topic_name": "Judges Chapter 09",
+      "num_questions_per_topic": 16
+    },
+    {
+      "topic_name": "Judges Chapter 10",
+      "num_questions_per_topic": 16
+    }
+  ],
+  "background_audio": "./bg-music/Simple Sonata - Sir Cubworth.mp3",
+  "topic_background_images": {
+    "Judges Chapter 01": "./images/judges_chapter_01_bg.png",
+    "Judges Chapter 02": "./images/judges_chapter_02_bg.png",
+    "Judges Chapter 03": "./images/judges_chapter_03_bg.png",
+    "Judges Chapter 04": "./images/judges_chapter_04_bg.png",
+    "Judges Chapter 05": "./images/judges_chapter_05_bg.png",
+    "Judges Chapter 06": "./images/judges_chapter_06_bg.png",
+    "Judges Chapter 07": "./images/judges_chapter_07_bg.png",
+    "Judges Chapter 08": "./images/judges_chapter_08_bg.png",
+    "Judges Chapter 09": "./images/judges_chapter_09_bg.png",
+    "Judges Chapter 10": "./images/judges_chapter_10_bg.png"
+
+  },
+  "start_slide": "./images/judges_cover.png",
+  "end_slide": "./images/common-end-slide.png",
+  "wide_aspect_ratio": {
+    "width": 1920,
+    "height": 1080
+  },
+  "working_slide_path": "./working-slides-judges",
+  "slide_durations": {
+    "start_slide": 5,
+    "question_slide": 12,
+    "answer_slide": 3,
+    "end_slide": 10
+  },
+  "font_path_question": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_path_options": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_path_answer": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_settings": {
+    "font_size_question": 72,
+    "font_color_question": [20, 20, 20],
+    "font_size_options": 72,
+    "font_color_options": [20, 20, 180],
+    "font_size_answer": 72,
+    "font_color_answer": [200, 20, 20]
+  },
+  "text_wrap_width": 45,
+  "output_video": "./output/Judges_01-10_200Qs.mp4"
+}

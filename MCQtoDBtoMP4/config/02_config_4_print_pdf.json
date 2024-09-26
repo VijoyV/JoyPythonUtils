@@ -1,7 +1,7 @@
 {
   "page_config": {
     "font_name": "Helvetica",
-    "font_size": 14,
+    "font_size": 12,
     "lines_per_page": 30
   },
   "output_file": "./LogosQuiz-2024_Judges_01-03.pdf",
