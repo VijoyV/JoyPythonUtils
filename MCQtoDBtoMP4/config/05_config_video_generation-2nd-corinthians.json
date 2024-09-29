@@ -1,0 +1,69 @@
+{
+  "subject": "Bible Logos Quiz 2024",
+  "topics": [
+    {
+      "topic_name": "2-Corinthians Chapter 07",
+      "num_questions_per_topic": 30
+    },
+    {
+      "topic_name": "2-Corinthians Chapter 08",
+      "num_questions_per_topic": 40
+    },
+        {
+      "topic_name": "2-Corinthians Chapter 09",
+      "num_questions_per_topic": 25
+    },
+    {
+      "topic_name": "2-Corinthians Chapter 10",
+      "num_questions_per_topic": 25
+    },
+    {
+      "topic_name": "2-Corinthians Chapter 11",
+      "num_questions_per_topic": 40
+    },
+    {
+      "topic_name": "2-Corinthians Chapter 12",
+      "num_questions_per_topic": 20
+    },
+    {
+      "topic_name": "2-Corinthians Chapter 13",
+      "num_questions_per_topic": 20
+    }
+  ],
+  "background_audio": "./bg-music/Interstellar Mood - Nico Staf.mp3",
+  "topic_background_images": {
+    "2-Corinthians Chapter 07": "./images/2-corinthians/2-corinthians_chapter_07_bg.png",
+    "2-Corinthians Chapter 08": "./images/2-corinthians/2-corinthians_chapter_08_bg.png",
+    "2-Corinthians Chapter 09": "./images/2-corinthians/2-corinthians_chapter_09_bg.png",
+    "2-Corinthians Chapter 10": "./images/2-corinthians/2-corinthians_chapter_10_bg.png",
+    "2-Corinthians Chapter 11": "./images/2-corinthians/2-corinthians_chapter_11_bg.png",
+    "2-Corinthians Chapter 12": "./images/2-corinthians/2-corinthians_chapter_12_bg.png",
+    "2-Corinthians Chapter 13": "./images/2-corinthians/2-corinthians_chapter_13_bg.png"
+  },
+  "start_slide": "./images/2-corinthians/cover-slide.png",
+  "end_slide": "./images/2-corinthians/end-slide.png",
+  "wide_aspect_ratio": {
+    "width": 1920,
+    "height": 1080
+  },
+  "working_slide_path": "./working-slides-2-corinthians",
+  "slide_durations": {
+    "start_slide": 5,
+    "question_slide": 12,
+    "answer_slide": 3,
+    "end_slide": 10
+  },
+  "font_path_question": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_path_options": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_path_answer": "C:/Windows/Fonts/ARLRDBD.TTF",
+  "font_settings": {
+    "font_size_question": 64,
+    "font_color_question": [20, 20, 20],
+    "font_size_options": 56,
+    "font_color_options": [20, 20, 180],
+    "font_size_answer": 64,
+    "font_color_answer": [200, 20, 20]
+  },
+  "text_wrap_width": 50,
+  "output_video": "./output/2ndCorinthians_07-13_200Qs.mp4"
+}

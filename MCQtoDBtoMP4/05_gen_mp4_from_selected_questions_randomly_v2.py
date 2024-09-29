@@ -107,7 +107,7 @@ def select_random_questions(filtered_questions, topics):
     return selected_questions
 
 
-# Remove duplicates based on question_id
+# Remove duplicates based on question_id and sort by question_id
 def remove_duplicates(selected_questions):
     unique_questions = []
     seen_question_ids = set()
@@ -118,8 +118,12 @@ def remove_duplicates(selected_questions):
             seen_question_ids.add(question_id)
         else:
             logging.info(f"Duplicate question found and skipped: {question_id}")
+
     logging.info(f"Total unique questions after removing duplicates: {len(unique_questions)}.")
-    return unique_questions
+
+    # Sort unique questions by topic (assumed to be at index 4) and then by question_id (index 0)
+    sorted_unique_questions = sorted(unique_questions, key=lambda x: (x[4], x[0]))
+    return sorted_unique_questions
 
 
 # Fetch, filter, select, and remove duplicates
@@ -168,16 +172,16 @@ def create_question_slide(question_content, options_content, background_image, f
     draw = ImageDraw.Draw(img)
 
     # Position for question text
-    x_question, y_question = 120, 180
+    x_question, y_question = 120, 150
     wrapped_question = wrap_text(question_content, font_question, config.get("text_wrap_width", 50), config)
     for line in wrapped_question:
         draw.text((x_question, y_question), line, font=font_question,
                   fill=tuple(config['font_settings']['font_color_question']))
-        y_question += 70
+        y_question += 80
 
     # Options
     if options_content:
-        x_options, y_options = 120, y_question + 100
+        x_options, y_options = 120, y_question + 120
         wrapped_options = wrap_text(options_content, font_options, config.get("text_wrap_width", 50), config)
         for line in wrapped_options:
             draw.text((x_options, y_options), line, font=font_options,
@@ -353,7 +357,7 @@ def generate_video(config_file):
 
     slides, durations = generate_slides(questions, config, topic_backgrounds)
 
-    # Create the video with continuous audio
+    # # Create the video with continuous audio
     create_video_from_slides(slides, config["output_video"], durations, audio_file, config)
 
     end_time = time.time()
@@ -362,4 +366,4 @@ def generate_video(config_file):
 
 
 if __name__ == "__main__":
-    generate_video("config/05_config_video_generation-luke.json")
+    generate_video("config/05_config_video_generation-sirach.json")
