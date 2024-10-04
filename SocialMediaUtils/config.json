@@ -1,0 +1,10 @@
+{
+    "image_folder": "./input/Tennis_Trivia_03/images",
+    "voice_text_file": "./input/Tennis_Trivia_03/voiceover.txt",
+    "output_audio_folder": "./output/tt_03_voiceover_audio",
+    "output_video_path": "./output/Tennis_Trivia_03.mp4",
+    "background_music_path": "./bg-music/Simple Sonata - Sir Cubworth.mp3",
+    "durations_per_image": [5, 20, 18, 16, 12, 5],
+    "video_size": [1080, 1920],
+    "background_music_volume": 0.1
+}

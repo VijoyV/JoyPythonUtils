@@ -22,8 +22,8 @@ def change_video_speed(input_path, output_path, speed_percentage, increase=True)
 
 
 # Example usage
-input_video = "./Throwing Two Dice With Music.mp4"
-output_video = "./Throwing Two Dice - Music Faster.mp4"
-speed_decrease = 20  # Decrease speed by 15%
+input_video = "./Tennis_Trivia_03.mp4"
+output_video = "./Tennis_Trivia_03_faster.mp4"
+speed_decrease = 30  # Decrease speed by 15%
 
 change_video_speed(input_video, output_video, speed_decrease, increase=True)
