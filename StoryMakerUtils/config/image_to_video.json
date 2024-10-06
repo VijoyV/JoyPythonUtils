@@ -1,0 +1,13 @@
+{
+    "image_path": "./input/test-image.png",
+    "text_file": "./input/content.txt",
+    "output_dir": "./output",
+    "output_video": "./output/output.mp4",
+    "font_path": "C:\\Windows\\Fonts\\ARIALNB.TTF",
+    "font_size": 64,
+    "text_color": "#0F0F0F",
+    "highlight_color": "#FF0000",
+    "wrap_width": 32,
+    "audio_speed": 1.0,
+    "fps": 30
+}

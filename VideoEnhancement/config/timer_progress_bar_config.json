@@ -4,7 +4,7 @@
   "BACKGROUND_COLOR": "green",
   "FOREGROUND_COLOR": "lightgrey",
   "DIGIT_COLOR": "white",
-  "DIGIT_FONT_SIZE": 18,
+  "DIGIT_FONT_SIZE": 16,
   "DIGIT_FONT_TYPE": "Arial",
   "BACKGROUND_MUSIC": "./bg-music/Simple Sonata - Sir Cubworth.mp3",
   "MUSIC_VOLUME": 0.3,

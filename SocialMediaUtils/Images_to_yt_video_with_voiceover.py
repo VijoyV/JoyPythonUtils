@@ -14,7 +14,7 @@ start_time = time.time()
 
 # Load configuration from config.json
 logging.info("Loading configuration from config.json")
-with open('config-shorts.json', 'r') as f:
+with open('config-video.json', 'r') as f:
     config = json.load(f)
 
 image_folder = config['image_folder']
@@ -23,7 +23,7 @@ output_audio_folder = config['output_audio_folder']
 output_video_path = config['output_video_path']
 background_music_path = config['background_music_path']
 durations_per_image = config['durations_per_image']
-video_size = tuple(config['video_size'])  # Video size (for vertical orientation)
+video_size = tuple(config['video_size'])  # Widescreen video size (16:9)
 background_music_volume = config['background_music_volume']
 
 # Ensure audio folder exists
@@ -41,6 +41,7 @@ image_files = sorted([os.path.join(image_folder, img) for img in os.listdir(imag
 
 # Ensure there are as many text entries as there are images and durations
 logging.info(f"Validating the number of text entries, image files, and durations")
+logging.info(f'voiceover_texts = {len(voiceover_texts)} | image_files = {len(image_files)} | durations_per_image = {len(durations_per_image)}')
 if len(voiceover_texts) != len(image_files) or len(durations_per_image) != len(image_files):
     raise ValueError("The number of text entries, image files, and durations must match.")
 
@@ -57,9 +58,9 @@ def process_image_audio(i, image_path, text, duration):
     # Load the generated audio clip
     audio_clip = mpy.AudioFileClip(audio_path)
 
-    # Create the image clip and resize to vertical (portrait) mode
+    # Create the image clip and resize to widescreen (16:9) mode
     img_clip = mpy.ImageClip(image_path).set_duration(duration).set_audio(audio_clip)
-    img_clip = img_clip.resize(video_size)  # Resize to vertical (portrait) mode
+    img_clip = img_clip.resize(video_size)  # Resize to widescreen (16:9) mode
 
     return img_clip
 
@@ -77,6 +78,7 @@ logging.info(f"Loading background music from {background_music_path}")
 background_music = mpy.AudioFileClip(background_music_path).subclip(0, final_video.duration)
 # background_music = background_music.volumex(background_music_volume)  # Adjust the volume once
 background_music = background_music.audio_fadeout(3).volumex(background_music_volume)
+
 
 # Set the combined audio (background music + voice-over)
 logging.info("Setting combined audio (background music + voice-over)")

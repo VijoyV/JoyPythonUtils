@@ -1,0 +1,10 @@
+{
+    "image_folder": "./input/LogosQuiz_2025/images",
+    "voice_text_file": "./input/LogosQuiz_2025/voiceover.txt",
+    "output_audio_folder": "./output/logosquiz2025_voiceover_audio",
+    "output_video_path": "./output/LogosQuiz_2025_widescreen.mp4",
+    "background_music_path": "./bg-music/Simple Sonata - Sir Cubworth.mp3",
+    "durations_per_image": [25, 25],
+    "video_size": [1920, 1080],
+    "background_music_volume": 0.1
+}
