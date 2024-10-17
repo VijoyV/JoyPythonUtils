@@ -80,7 +80,7 @@ audio = audio.fx(afx.audio_fadeout, FADEOUT_DURATION)
 animation = animation.set_audio(audio)
 
 # Save the video to a file with the configured FPS
-output_filename = "timer_progress_bar_30Sec.mp4"
+output_filename = "output/timer_progress_bar_30Sec.mp4"
 animation.write_videofile(output_filename, fps=FPS, codec="libx264", bitrate="5000k", audio_codec="aac")
 
 print(f"Timer video with background music and custom font saved as {output_filename}")

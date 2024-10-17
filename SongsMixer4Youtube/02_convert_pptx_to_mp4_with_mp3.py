@@ -62,7 +62,7 @@ def create_video_from_images_and_audio(output_dir, config_file, output_video):
     video_clips = []
 
     # Process slides
-    for slide_num in range(1, 8):  # Assuming there are 13 slides (update if necessary)
+    for slide_num in range(1, 7):  # Assuming there are 13 slides (update if necessary)
         image_file = os.path.join(output_dir, f"Slide{slide_num}.jpg")
 
         if not os.path.exists(image_file):

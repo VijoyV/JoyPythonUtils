@@ -1,0 +1,9 @@
+{
+  "input_mp3": "./input/Swargasthanaya.mp3",
+  "audio_language": "ml-IN",
+  "image_for_video": "Rosary.png",
+  "srt_filename": "./output/Swargasthanaya.srt",
+  "output_mp4": "./output/Swargasthanaya.mp4",
+  "font_path": "C:\\ExtraFonts\\keraleeyam.ttf",
+  "video_dimensions": [1080, 1920]
+}

@@ -13,3 +13,7 @@ venv/
 *.jpeg
 *.mp3
 *.mp4
+*.webp
+*.jpg
+*.PNG
+*>JPG
