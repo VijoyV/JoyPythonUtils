@@ -1,0 +1,5 @@
+{
+    "input_mp3": "input_audio.mp3",
+    "audio_language": "ml-IN",
+    "srt_filename": "output_subtitles.srt"
+}

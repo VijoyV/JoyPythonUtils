@@ -2,7 +2,7 @@ import whisper
 from pydub import AudioSegment
 
 # (Optional) Convert MP3 to WAV for better quality
-sound = AudioSegment.from_mp3("./ETHRAYUM_DHAYAYULLA_MATHAVE.MP3")
+sound = AudioSegment.from_mp3("songs/NITHYA_SOUJANYA_DHAYAKA_KARTHAVE_SREE_YESU_NAATHA.MP3")
 sound.export("converted_song.wav", format="wav")
 
 # Load the Whisper model (choose a model size: tiny, base, small, medium, large)

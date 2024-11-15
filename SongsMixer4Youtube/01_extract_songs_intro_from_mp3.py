@@ -4,7 +4,7 @@ from pydub import AudioSegment
 # Function to read the config.json and process the audio
 def main():
     # Path to the config.json file
-    config_file_path = 'music-mp3.json'
+    config_file_path = '01_extract-bits-from-mp3-songs.json'
 
     # Read the configuration from config.json
     with open(config_file_path, 'r') as f:
@@ -35,7 +35,7 @@ def main():
         final_audio += extracted_segment
 
     # Export the final merged audio to a new MP3 file
-    output_path = "mp3-songs/ALBUM_INTRO.mp3"
+    output_path = "mp3-songs/YESU_KRISTU_ALBUM-1_INTRO.mp3"
     final_audio.export(output_path, format="mp3")
 
     print(f"Merged MP3 with fade-out saved to {output_path}")

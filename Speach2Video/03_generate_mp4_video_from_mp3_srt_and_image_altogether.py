@@ -12,7 +12,7 @@ from pysrt import SubRipFile, SubRipItem, SubRipTime
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Load config
-with open('config.json', 'r') as f:
+with open('config/config-03.json', 'r') as f:
     config = json.load(f)
 
 input_mp3 = config['input_mp3']

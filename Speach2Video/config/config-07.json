@@ -1,0 +1,20 @@
+{
+  "slides": [
+    {
+      "image": "./input/images/Slide1.PNG",
+      "mp3": "./input/Swargasthanaya_cleaned.mp3",
+      "output_mp4": "./output/Swargasthanaya.mp4"
+    },
+    {
+      "image": "./input/images/Slide2.PNG",
+      "mp3": "./input/NanmaNiranjaMariyame_cleaned.mp3",
+      "output_mp4": "./output/NanmaNiranjaMariyame.mp4"
+    },
+    {
+      "image": "./input/images/Slide3.PNG",
+      "mp3": "./input/Sthuthi_cleaned.mp3",
+      "output_mp4": "./output/Sthuthi.mp4"
+    }
+  ]
+}
+

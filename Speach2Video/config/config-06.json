@@ -1,0 +1,17 @@
+{
+  "output_mp4": "./output/combined_video.mp4",
+  "slides": [
+    {
+      "image": "./input/images/Slide1.JPG",
+      "mp3": "./input/audio/Slide1.mp3"
+    },
+    {
+      "image": "./input/images/Slide2.JPG",
+      "mp3": "./input/audio/Slide2.mp3"
+    },
+    {
+      "image": "./input/images/Slide3.JPG",
+      "mp3": "./input/audio/Slide3.mp3"
+    }
+  ]
+}

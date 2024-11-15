@@ -1,0 +1,18 @@
+{
+  "input_mp3": "./input/Swargasthanaya.mp3",
+  "output_mp4": "./output/Swargasthanaya.mp4",
+  "slides": [
+    {
+      "image": "./input/images/Slide1.JPG",
+      "duration": 10
+    },
+    {
+      "image": "./input/images/Slide2.JPG",
+      "duration": 10
+    },
+    {
+      "image": "./input/images/Slide3.JPG",
+      "duration": 6
+    }
+  ]
+}

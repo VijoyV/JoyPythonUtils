@@ -1,0 +1,40 @@
+{
+  "input_mp3": "./input/Swargasthanaya.mp3",
+  "output_mp4": "./output/Swargasthanaya.mp4",
+  "video_dimensions": [1080, 1920],
+  "font_path": "C:\\ExtraFonts\\keraleeyam.ttf",
+  "font_size": 40,
+  "font_color": "blue",
+  "slides": [
+    {
+      "image": "Rosary.png",
+      "from_time": "00:00",
+      "to_time": "00:05",
+      "text": "സ്വർഗ്ഗസ്ഥനായ ഞങ്ങളുടെ പിതാവേ, അങ്ങയുടെ നാമം പൂജിതമാകണമേ, അങ്ങയുടെ രാജ്യം വരേണമേ,"
+    },
+    {
+      "image": "Rosary.png",
+      "from_time": "00:05",
+      "to_time": "00:08",
+      "text": "അങ്ങയുടെ തിരുമനസ്സ് സ്വർഗ്ഗത്തിലെപ്പോലെ ഭൂമിയിലുമാകണമേ."
+    },
+    {
+      "image": "Rosary.png",
+      "from_time": "00:08",
+      "to_time": "00:11",
+      "text": "അന്നന്ന് വേണ്ട ആഹാരം ഞങ്ങൾക്ക് തരേണമേ."
+    },
+    {
+      "image": "Rosary.png",
+      "from_time": "00:11",
+      "to_time": "00:20",
+      "text": "ഞങ്ങളോട് തെറ്റ് ചെയ്യുന്നവരോട് ഞങ്ങൾ ക്ഷമിക്കുന്നതുപോലെ,ഞങ്ങളുടെ തെറ്റുകൾ ഞങ്ങളോടും ക്ഷമിക്കേണമേ."
+    },
+    {
+      "image": "Rosary.png",
+      "from_time": "00:20",
+      "to_time": "00:26",
+      "text": "ഞങ്ങളെ പ്രലോഭനത്തിൽ ഉൾപ്പെടുത്തരുതേ തിന്മയിൽ നിന്നും ഞങ്ങളെ രക്ഷിക്കണെമെ, ആമ്മേൻ "
+    }
+  ]
+}

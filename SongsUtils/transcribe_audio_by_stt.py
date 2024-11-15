@@ -2,15 +2,15 @@ import speech_recognition as sr
 from pydub import AudioSegment
 
 # Convert audio to proper format (16 kHz, mono)
-sound = AudioSegment.from_wav("./ETHRAYUM_DHAYAYULLA_MATHAVE.WAV")
+sound = AudioSegment.from_wav("./NITHYA_SOUJANYA_DHAYAKA_KARTHAVE_SREE_YESU_NAATHA.WAV")
 sound = sound.set_frame_rate(16000).set_channels(1)
-sound.export("./ETHRAYUM_DHAYAYULLA_MATHAVE_CONV.WAV", format="wav")
+sound.export("./NITHYA_SOUJANYA_DHAYAKA_KARTHAVE_SREE_YESU_NAATHA_CONV.WAV", format="wav")
 
 # Initialize recognizer
 recognizer = sr.Recognizer()
 
 # Load the smaller WAV file (first 60 seconds)
-audio_file = sr.AudioFile("./ETHRAYUM_DHAYAYULLA_MATHAVE_CONV.WAV")
+audio_file = sr.AudioFile("./NITHYA_SOUJANYA_DHAYAKA_KARTHAVE_SREE_YESU_NAATHA_CONV.WAV")
 with audio_file as source:
     audio_data = recognizer.record(source)
 
@@ -20,7 +20,7 @@ try:
     print("Transcription: ", text)
 
     # Write the transcription to a .txt file
-    with open("./ETHRAYUM_DHAYAYULLA_MATHAVE.txt", "w", encoding="utf-8") as file:
+    with open("./NITHYA_SOUJANYA_DHAYAKA.txt", "w", encoding="utf-8") as file:
         file.write(text)
 
     print("Transcription saved to 'transcription_output.txt'")

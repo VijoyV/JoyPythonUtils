@@ -84,9 +84,9 @@ def create_videos_for_each_slide(output_dir, config_file):
 
 
 if __name__ == "__main__":
-    ppt_path = "./ChristianMarianSongs_10_BestOnes_ToSplit.pptx"  # Path to your PPTX file
+    ppt_path = "./source-ppt/JesusChrist_BestSongs_Vol1.pptx"  # Path to your PPTX file
     output_dir = "./slide_images"  # Folder to save exported slide images
-    config_file = "./slide_mp3_mapping_for_mp4.json"  # Config file with slide to song mapping
+    config_file = "03_slide-song-mapping.json"  # Config file with slide to song mapping
 
     # Run the conversion steps
     if ppt_to_images(ppt_path, output_dir):  # Convert PPT to images

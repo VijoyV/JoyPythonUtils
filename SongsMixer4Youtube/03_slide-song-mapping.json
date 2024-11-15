@@ -1,0 +1,42 @@
+[
+  {
+    "slide": "1",
+    "mp3_path": "./mp3-songs/YESU_KRISTU_ALBUM-1_INTRO.mp3",
+    "mp4_path": "./mp4-video/YESU_KRISTU_ALBUM-1_INTRO.mp4"
+  },
+  {
+    "slide": "2",
+    "mp3_path": "./mp3-songs/AAKASHATHIN_MAHIMAVE_AASRAYAM_NEE_YEN_YEHOVE.MP3",
+    "mp4_path": "./mp4-video/AAKASHATHIN_MAHIMAVE_AASRAYAM_NEE_YEN_YEHOVE.mp4"
+  },
+  {
+    "slide": "3",
+    "mp3_path": "./mp3-songs/ANTHI_VILAKKU_PRAKASHM_PARATHUNNA.MP3",
+    "mp4_path": "./mp4-video/ANTHI_VILAKKU_PRAKASHM_PARATHUNNA.mp4"
+  },
+  {
+    "slide": "4",
+    "mp3_path": "./mp3-songs/ARCHANAA_SOONANGALODE_SANGEERTHANANGALUM_PAADI.MP3",
+    "mp4_path": "./mp4-video/ARCHANAA_SOONANGALODE_SANGEERTHANANGALUM_PAADI.mp4"
+  },
+  {
+    "slide": "5",
+    "mp3_path": "./mp3-songs/JEEVITHAM_ANGE_THRIPPADATHIL.MP3",
+    "mp4_path": "./mp4-video/JEEVITHAM_ANGE_THRIPPADATHIL.mp4"
+  },
+  {
+    "slide": "6",
+    "mp3_path": "./mp3-songs/KANIVIN_KADALE_KANYA_KUMARA.MP3",
+    "mp4_path": "./mp4-video/KANIVIN_KADALE_KANYA_KUMARA.mp4"
+  },
+  {
+    "slide": "7",
+    "mp3_path": "./mp3-songs/NITHYA_SOUJANYA_DHAYAKA_KARTHAVE_SREE_YESU_NAATHA.MP3",
+    "mp4_path": "./mp4-video/NITHYA_SOUJANYA_DHAYAKA_KARTHAVE_SREE_YESU_NAATHA.mp4"
+  },
+  {
+    "slide": "8",
+    "mp3_path": "./mp3-songs/ORSHALEMIN_NAYAKA_JEEVA_DHAYAKA.MP3",
+    "mp4_path": "./mp4-video/ORSHALEMIN_NAYAKA_JEEVA_DHAYAKA.mp4"
+  }
+]
