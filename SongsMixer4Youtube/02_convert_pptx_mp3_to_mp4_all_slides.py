@@ -1,10 +1,9 @@
 import json
 import os
-
-import win32com.client  # This line was missing, now added.
-from moviepy.editor import ImageClip, AudioFileClip, concatenate_videoclips
+import math
 from mutagen.mp3 import MP3
-
+from moviepy.editor import ImageClip, AudioFileClip, concatenate_videoclips
+import win32com.client  # Required for PowerPoint COM interface
 
 # Step 1: Export PPT slides as images using win32com.client PowerPoint COM interface
 def ppt_to_images(ppt_path, output_dir):
@@ -91,16 +90,23 @@ def create_video_from_images_and_audio(output_dir, config_file, output_video):
             audio_file = song_mappings[str(slide_num)]
             if os.path.exists(audio_file):
                 print(f"Audio file {audio_file} found for slide {slide_num}. Retrieving duration...")
-                audio = MP3(audio_file)
-                duration = audio.info.length
-                print(f"Audio duration for slide {slide_num}: {duration} seconds.")
+                try:
+                    audio = MP3(audio_file)
+                    duration = math.floor(audio.info.length)  # Round down to nearest second
+                    print(f"Audio duration for slide {slide_num}: {duration} seconds.")
 
-                image_clip = ImageClip(image_file, duration=duration + 1)
-                audio_clip = AudioFileClip(audio_file).subclip(0, duration)
-                image_clip = image_clip.set_audio(audio_clip)
+                    # Reduce the duration by a small margin to avoid precision issues
+                    duration_safe = max(0, duration - 0.1)
+                    image_clip = ImageClip(image_file, duration=duration_safe)
+                    audio_clip = AudioFileClip(audio_file).subclip(0, duration_safe)
+                    image_clip = image_clip.set_audio(audio_clip)
 
-                print(f"Slide {slide_num} image and audio combined successfully.")
-                video_clips.append(image_clip)
+                    print(f"Slide {slide_num} image and audio combined successfully.")
+                    video_clips.append(image_clip)
+                except Exception as e:
+                    print(f"Error processing audio for slide {slide_num}: {e}")
+                    image_clip = ImageClip(image_file, duration=default_duration)
+                    video_clips.append(image_clip)
             else:
                 print(f"Warning: {audio_file} not found. Using default duration for slide {slide_num}.")
                 image_clip = ImageClip(image_file, duration=default_duration)
@@ -121,9 +127,9 @@ def create_video_from_images_and_audio(output_dir, config_file, output_video):
 
 
 if __name__ == "__main__":
-    ppt_path = "./source-ppt/JesusChrist_BestSongs_Vol1.pptx"  # Use absolute path to your PPTX file
+    ppt_path = "./source-ppt/JesusChrist_BestSongs_Vol2.pptx"  # Use absolute path to your PPTX file
     output_dir = "./slide_images"  # Folder to save exported slide images
-    output_video = "./YESU_KRISTU_FILM_SONGS_VOL-1.mp4"  # Final output MP4 file
+    output_video = "./YESU_KRISTU_FILM_SONGS_VOL-2.mp4"  # Final output MP4 file
     config_file = "02_slide-song-mapping.json"  # Config file with slide to song mapping
 
     print("Starting PowerPoint to video conversion process...")

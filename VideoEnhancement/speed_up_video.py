@@ -22,8 +22,8 @@ def change_video_speed(input_path, output_path, speed_percentage, increase=True)
 
 
 # Example usage
-input_video = "./input/JapamalaVideo.mp4"
-output_video = "./output/Japamala-120.mp4"
-speed_percentage = 20  # increase / decrease %
+input_video = "C:\\WorkArea\\YESU_KRISTU_FILM_SONGS_VOL-1.mp4"
+output_video = "C:\\WorkArea\\YESU_KRISTUVINTE_MALAYALAM_FILM_SONGS_VOL-1.mp4"
+speed_percentage = 10  # increase / decrease %
 
 change_video_speed(input_video, output_video, speed_percentage, increase=True)

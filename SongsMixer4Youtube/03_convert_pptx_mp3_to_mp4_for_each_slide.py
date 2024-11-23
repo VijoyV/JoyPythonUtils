@@ -84,7 +84,7 @@ def create_videos_for_each_slide(output_dir, config_file):
 
 
 if __name__ == "__main__":
-    ppt_path = "./source-ppt/JesusChrist_BestSongs_Vol1.pptx"  # Path to your PPTX file
+    ppt_path = "./source-ppt/JesusChrist_BestSongs_Vol2.pptx"  # Path to your PPTX file
     output_dir = "./slide_images"  # Folder to save exported slide images
     config_file = "03_slide-song-mapping.json"  # Config file with slide to song mapping
 

@@ -1,14 +1,13 @@
 {
   "default_duration": 20,
   "songs": {
-    "1": "./mp3-songs/YESU_KRISTU_ALBUM-1_INTRO.mp3",
-    "2": "./mp3-songs/AAKASHATHIN_MAHIMAVE_AASRAYAM_NEE_YEN_YEHOVE.MP3",
-    "3": "./mp3-songs/ANTHI_VILAKKU_PRAKASHM_PARATHUNNA.MP3",
-    "4": "./mp3-songs/ARCHANAA_SOONANGALODE_SANGEERTHANANGALUM_PAADI.MP3",
-    "5": "./mp3-songs/JEEVITHAM_ANGE_THRIPPADATHIL.MP3",
-    "6": "./mp3-songs/KANIVIN_KADALE_KANYA_KUMARA.MP3",
-    "7": "./mp3-songs/NITHYA_SOUJANYA_DHAYAKA_KARTHAVE_SREE_YESU_NAATHA.MP3",
-    "8": "./mp3-songs/ORSHALEMIN_NAYAKA_JEEVA_DHAYAKA.MP3"
+    "2": "./mp3-songs/PAAVANAANAM_AATTIDAYA.MP3",
+    "3": "./mp3-songs/RAAJAKAN_MAARUDE_RAAJAVE.MP3",
+    "4": "./mp3-songs/SNEHA_SWAROOPANAM_EN_JEEVA_NAYAK.MP3",
+    "5": "./mp3-songs/YARUSHALEMILE_SWARGADHOOTHA_YESU_NADHAA_.MP3",
+    "6": "./mp3-songs/YARUSHALEMIN_NAYAKA_NINNE_ENNU_KAANUM.MP3",
+    "7": "./mp3-songs/YESUVE_EN_JEEVANE_NAMO_NAMO.MP3",
+    "8": "./mp3-songs/YESU_NAAYAKA_DEVAA_SNEHA_GAYAKA.MP3"
   },
-  "slides_without_audio": [9]
+  "slides_without_audio": [1,9]
 }
