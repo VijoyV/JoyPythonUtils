@@ -25,7 +25,7 @@ def download_playlist_best_combined(playlist_url, output_path):
 
 # Example usage
 download_path = "C:\\Users\\vijoy\\Downloads\\YouTubeVideos"
-playlist_url = "https://www.youtube.com/playlist?list=PLhScUzAeZHzvtl-11FuJWR1x9-PBY-Amp"
+playlist_url = "https://www.youtube.com/watch?v=xwYRCsX4zcc"
 download_playlist_best_combined(playlist_url, download_path)
 
 

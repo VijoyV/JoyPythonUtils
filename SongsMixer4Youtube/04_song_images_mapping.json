@@ -1,0 +1,31 @@
+{
+  "mp3_file": "./mp3-songs/AAKAASHATHIN_KEEZHIL_VERORU_NAAMAMILLALLO.MP3",
+  "output_video": "./mp4-video/AAKAASHATHIN_KEEZHIL_VERORU_NAAMAMILLALLO.mp4",
+  "images": [
+    {
+      "image": "./direct-images/Slide1.JPG",
+      "start_time": 0,
+      "end_time": 20
+    },
+    {
+      "image": "./direct-images/Slide2.JPG",
+      "start_time": 20,
+      "end_time": 80
+    },
+    {
+      "image": "./direct-images/Slide3.JPG",
+      "start_time": 80,
+      "end_time": 170
+    },
+    {
+      "image": "./direct-images/Slide4.JPG",
+      "start_time": 170,
+      "end_time": 245
+    },
+    {
+      "image": "./direct-images/Slide5.JPG",
+      "start_time": 245,
+      "end_time": 250
+    }
+  ]
+}
