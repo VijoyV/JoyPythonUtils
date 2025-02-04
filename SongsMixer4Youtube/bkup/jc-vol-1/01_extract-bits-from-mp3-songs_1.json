@@ -1,0 +1,37 @@
+[
+  {
+    "path": "./mp3-songs/PAAVANAANAM_AATTIDAYA.MP3",
+    "start_time": 16,
+    "end_time": 42
+  },
+  {
+    "path": "./mp3-songs/RAAJAKAN_MAARUDE_RAAJAVE.MP3",
+    "start_time": 16,
+    "end_time": 36
+  },
+  {
+    "path": "./mp3-songs/SNEHA_SWAROOPANAM_EN_JEEVA_NAYAK.MP3",
+    "start_time": 22,
+    "end_time": 45
+  },
+  {
+    "path": "./mp3-songs/YARUSHALEMILE_SWARGADHOOTHA_YESU_NADHAA_.MP3",
+    "start_time": 40,
+    "end_time": 70
+  },
+  {
+    "path": "./mp3-songs/YARUSHALEMIN_NAYAKA_NINNE_ENNU_KAANUM.MP3",
+    "start_time": 24,
+    "end_time": 59
+  },
+  {
+    "path": "./mp3-songs/YESUVE_EN_JEEVANE_NAMO_NAMO.MP3",
+    "start_time": 6,
+    "end_time": 30
+  },
+  {
+    "path": "./mp3-songs/YESU_NAAYAKA_DEVAA_SNEHA_GAYAKA.MP3",
+    "start_time": 19,
+    "end_time": 59
+  }
+]

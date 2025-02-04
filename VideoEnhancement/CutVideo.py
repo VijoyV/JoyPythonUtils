@@ -24,9 +24,9 @@ def cut_video(input_file, output_file, start_time, end_time):
 
 if __name__ == "__main__":
     # Example usage
-    input_video = "C:\\Users\\vijoy\\Downloads\\JoannaArangetramVideo\\Part-02.mp4"
-    output_video = "C:\\Users\\vijoy\\Downloads\\JoannaArangetramVideo\\Dance-09.mp4"
-    t1 = "01:22:01"  # Start time in HH:MM:SS
-    t2 = "01:30:50"  # End time in HH:MM:SS
+    input_video = "C:\\SocialMediaWorkshop\\YTC_ClassicChristianCorner\\03-ChristmasSongs\\ThreeOldChristmasSongs.mp4"
+    output_video = "C:\\SocialMediaWorkshop\\YTC_ClassicChristianCorner\\03-ChristmasSongs\\ThreeVeryOldChristmasSongs.mp4"
+    t1 = "00:00:01"  # Start time in HH:MM:SS
+    t2 = "00:14:25"  # End time in HH:MM:SS
 
     cut_video(input_video, output_video, t1, t2)

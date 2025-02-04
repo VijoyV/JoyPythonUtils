@@ -14,7 +14,7 @@ start_time = time.time()
 
 # Load configuration from config.json
 logging.info("Loading configuration from config.json")
-with open('config-video.json', 'r') as f:
+with open('config/Images_to_yt_video_with_voiceover.json', 'r') as f:
     config = json.load(f)
 
 image_folder = config['image_folder']

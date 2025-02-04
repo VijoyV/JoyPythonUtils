@@ -1,10 +1,10 @@
-from moviepy.editor import VideoFileClip, CompositeVideoClip, concatenate_videoclips
+from moviepy.editor import VideoFileClip, CompositeVideoClip
 
 
-def create_side_by_side_video_with_audio(video_paths, output_file="side_by_side_output_with_audio.mp4"):
+def create_vertical_video_with_audio(video_paths, output_file="vertical_output_with_audio.mp4"):
     """
-    Create a video with three input videos displayed side by side in a wide-screen format,
-    using the audio from the middle video.
+    Create a video with three input videos displayed vertically (top, middle, bottom)
+    in a YouTube Shorts-style vertical format, using the audio from the middle video.
     Args:
         video_paths (list): Paths to three video files.
         output_file (str): Path for the output video file.
@@ -18,23 +18,23 @@ def create_side_by_side_video_with_audio(video_paths, output_file="side_by_side_
         print("Loading video files...")
         clips = [VideoFileClip(path) for path in video_paths]
 
-        # Resize each clip to 1/3 of the frame width
-        frame_width = 1280  # Standard wide-screen width
-        frame_height = 720  # Standard wide-screen height
-        subframe_width = frame_width // 3  # Each video occupies 1/3 of the width
+        # Resize each clip to 1/3 of the frame height
+        frame_width = 1080  # Standard YouTube Shorts width
+        frame_height = 1920  # Standard YouTube Shorts height
+        subframe_height = frame_height // 3  # Each video occupies 1/3 of the height
 
         print("Resizing video clips...")
-        resized_clips = [clip.resize(height=frame_height) for clip in clips]
+        resized_clips = [clip.resize(width=frame_width) for clip in clips]
 
-        # Position each clip horizontally
+        # Position each clip vertically
         print("Positioning video clips...")
         final_clips = [
-            resized_clips[0].set_position((0, 0)),
-            resized_clips[1].set_position((subframe_width, 0)),
-            resized_clips[2].set_position((2 * subframe_width, 0)),
+            resized_clips[0].set_position((0, 0)),  # Top
+            resized_clips[1].set_position((0, subframe_height)),  # Middle
+            resized_clips[2].set_position((0, 2 * subframe_height)),  # Bottom
         ]
 
-        # Combine the clips into one video
+        # Combine the clips into one vertical video
         print("Combining video clips...")
         stacked_video = CompositeVideoClip(final_clips, size=(frame_width, frame_height))
 
@@ -55,9 +55,9 @@ def create_side_by_side_video_with_audio(video_paths, output_file="side_by_side_
 if __name__ == "__main__":
     # Provide paths to three video files
     video_paths = [
-        "./output/Tennis_Trivia_01.mp4",  # Left
-        "./output/Tennis_Trivia_02.mp4",  # Center (audio source)
-        "./output/Tennis_Trivia_03.mp4",  # Right
+        "./output/Tennis_Trivia_01.mp4",  # Top
+        "./output/Tennis_Trivia_02.mp4",  # Middle (audio source)
+        "./output/Tennis_Trivia_03.mp4",  # Bottom
     ]
-    output_file = "./output/side_by_side_output_with_audio.mp4"
-    create_side_by_side_video_with_audio(video_paths, output_file)
+    output_file = "./output/3in1-vertical.mp4"
+    create_vertical_video_with_audio(video_paths, output_file)

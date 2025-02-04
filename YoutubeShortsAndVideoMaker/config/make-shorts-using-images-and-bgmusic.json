@@ -1,0 +1,8 @@
+{
+    "image_folder": "./input/mother-mary-songs-set-01",
+    "background_music_path": "./mp3-4-shorts/MotherMary_Songs_Vol_01_SHORT.mp3",
+    "output_video_path": "./output/MotherMary_Songs_Vol_01_SHORT.mp4",
+    "durations_per_image": [56, 48, 48],
+    "video_size": [1080, 1920],
+    "background_music_volume": 0.8
+}

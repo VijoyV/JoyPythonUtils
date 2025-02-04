@@ -39,5 +39,5 @@ def convert_webp_to_jpeg_in_directory(directory_path):
         print(f"Error: {e}")
 
 # Example usage
-directory = "C:\\Users\\vijoy\\Downloads"  # Replace with the path to your directory
+directory = "C:\\Users\\vijoy\\OneDrive\\Pictures\\4Shorts"  # Replace with the path to your directory
 convert_webp_to_jpeg_in_directory(directory)

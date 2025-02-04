@@ -10,7 +10,7 @@ def convert_ogg_to_mp3(input_file, output_file):
 
 
 # Example usage
-input_file = "C:\\Users\\vijoy\\OneDrive\\Documents\\STFU-Updates\\Vicar-Message-2024-09-07.ogg"  # Path to the input .ogg file
-output_file = "C:\\Users\\vijoy\\OneDrive\\Documents\\STFU-Updates\\Vicar-Message-2024-09-07.mp3"  # Path to save the converted .mp3 file
+input_file = "C:\\Users\\vijoy\\OneDrive\\Documents\\STFU-Updates\\ChristmasCeleberationMessage_Vicar.ogg"  # Path to the input .ogg file
+output_file = "C:\\Users\\vijoy\\OneDrive\\Documents\\STFU-Updates\\ChristmasCeleberationMessage_Vicar.m3"  # Path to save the converted .mp3 file
 
 convert_ogg_to_mp3(input_file, output_file)
