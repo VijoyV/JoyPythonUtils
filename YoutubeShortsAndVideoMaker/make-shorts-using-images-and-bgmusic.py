@@ -2,194 +2,307 @@ import os
 import json
 import time
 import logging
+from typing import Dict, List, Tuple, Optional
+from dataclasses import dataclass
+from enum import Enum
 import moviepy.editor as mpy
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 
 
-def load_configuration(config_path_in):
+class TransitionType(Enum):
+    """Available transition types between images"""
+    NONE = "none"
+    FADE = "fade"
+    CROSSFADE = "crossfade"
+
+
+@dataclass
+class ImageConfig:
+    """Configuration for a single image in the video"""
+    path: str
+    duration: float
+    transition: TransitionType = TransitionType.NONE
+    transition_duration: float = 1.0
+
+    def __post_init__(self):
+        if self.duration < 1:
+            raise ValueError("Image duration must be at least 1 second")
+        if self.transition_duration >= self.duration:
+            raise ValueError("Transition duration must be less than image duration")
+
+
+@dataclass
+class VideoConfig:
+    """Main video configuration"""
+    images: List[ImageConfig]
+    background_music_path: str
+    output_video_path: str
+    video_size: Tuple[int, int]
+    background_music_volume: float
+    fps: int = 24
+    threads: int = 8
+    codec: str = 'libx264'
+    audio_codec: str = 'aac'
+    bitrate: str = '8000k'
+    audio_bitrate: str = '192k'
+    color_mode: str = 'RGB24'
+
+    def __post_init__(self):
+        if self.background_music_volume < 0 or self.background_music_volume > 1:
+            raise ValueError("Background music volume must be between 0 and 1")
+        if self.fps < 1:
+            raise ValueError("FPS must be positive")
+        if self.threads < 1:
+            raise ValueError("Thread count must be positive")
+
+
+def load_configuration(config_path_in: str) -> VideoConfig:
     """
-    Load configuration from a JSON file.
+    Load and validate configuration from a JSON file.
 
     Args:
-        config_path (str): Path to the configuration JSON file.
+        config_path_in (str): Path to the configuration JSON file.
 
     Returns:
-        dict: Configuration settings
+        VideoConfig: Validated configuration object
+
+    Raises:
+        FileNotFoundError: If config file is not found
+        json.JSONDecodeError: If config file is invalid JSON
+        ValueError: If config values are invalid
     """
     try:
         with open(config_path_in, 'r') as f:
-            return json.load(f)
+            config_dict = json.load(f)
+
+        # Convert image configs to ImageConfig objects
+        image_configs = [
+            ImageConfig(
+                path=img['path'],
+                duration=img['duration'],
+                transition=TransitionType(img.get('transition', 'none')),
+                transition_duration=img.get('transition_duration', 1.0)
+            )
+            for img in config_dict['images']
+        ]
+
+        # Create and return VideoConfig object
+        return VideoConfig(
+            images=image_configs,
+            background_music_path=config_dict['background_music_path'],
+            output_video_path=config_dict['output_video_path'],
+            video_size=tuple(config_dict['video_size']),
+            background_music_volume=config_dict['background_music_volume'],
+            fps=config_dict.get('fps', 24),
+            threads=config_dict.get('threads', 8),
+            codec=config_dict.get('codec', 'libx264'),
+            audio_codec=config_dict.get('audio_codec', 'aac'),
+            bitrate=config_dict.get('bitrate', '8000k'),
+            audio_bitrate=config_dict.get('audio_bitrate', '192k'),
+            color_mode=config_dict.get('color_mode', 'RGB24')
+        )
+
     except FileNotFoundError:
         logging.error(f"Configuration file not found: {config_path_in}")
         raise
     except json.JSONDecodeError:
         logging.error(f"Invalid JSON in configuration file: {config_path_in}")
         raise
+    except Exception as e:
+        logging.error(f"Error in configuration: {str(e)}")
+        raise
 
 
-def setup_logging():
+def setup_logging(log_file: Optional[str] = None):
     """
     Configure logging settings.
+
+    Args:
+        log_file (Optional[str]): Path to log file. If None, logs to console only.
     """
+    handlers = [
+        logging.StreamHandler()
+    ]
+
+    # if log_file:
+    #     os.makedirs(os.path.dirname(log_file), exist_ok=True)
+    #     handlers.append(logging.FileHandler(log_file))
+
     logging.basicConfig(
         level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s'
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=handlers
     )
 
 
-def ensure_output_directory(directory):
+def validate_image_paths(config: VideoConfig) -> None:
     """
-    Create output directory if it doesn't exist.
+    Validate that all specified image paths exist and are valid image files.
 
     Args:
-        directory (str): Path to the directory
+        config (VideoConfig): Video configuration
+
+    Raises:
+        FileNotFoundError: If any image file is not found
+        ValueError: If any file is not a valid image format
     """
-    os.makedirs(directory, exist_ok=True)
-    logging.info(f"Ensuring output directory exists: {directory}")
+    valid_extensions = {'.jpg', '.jpeg', '.png', '.webp'}
+
+    for img_config in config.images:
+        path = Path(img_config.path)
+        if not path.exists():
+            raise FileNotFoundError(f"Image file not found: {path}")
+
+        if path.suffix.lower() not in valid_extensions:
+            raise ValueError(f"Invalid image format for file: {path}")
+
+    logging.info(f"Validated {len(config.images)} image paths")
 
 
-def get_image_files(image_folder):
+def process_image_clip(img_config: ImageConfig, video_size: Tuple[int, int]) -> mpy.VideoClip:
     """
-    Retrieve sorted list of image files from the specified folder.
+    Process a single image into a video clip.
 
     Args:
-        image_folder (str): Path to the image folder
+        img_config (ImageConfig): Image configuration
+        video_size (tuple): Target video dimensions (width, height)
 
     Returns:
-        list: Sorted list of image file paths
+        mpy.VideoClip: Processed video clip with transitions
     """
-    image_extensions = ('webp', 'PNG', 'jpg', 'jpeg')
-    image_files = sorted([
-        os.path.join(image_folder, img)
-        for img in os.listdir(image_folder)
-        if img.endswith(image_extensions)
-    ])
-    logging.info(f"Found {len(image_files)} image files in {image_folder}")
-    return image_files
+    try:
+        img_clip = mpy.ImageClip(img_config.path)
+
+        # Resize maintaining aspect ratio
+        img_clip = img_clip.resize(height=video_size[1])
+
+        # Center crop to target width
+        img_clip = img_clip.crop(x_center=img_clip.w / 2, width=video_size[0])
+
+        # Set duration
+        img_clip = img_clip.set_duration(img_config.duration)
+
+        # Apply transitions if specified
+        if img_config.transition != TransitionType.NONE:
+            if img_config.transition == TransitionType.FADE:
+                img_clip = img_clip.fadein(img_config.transition_duration)
+                img_clip = img_clip.fadeout(img_config.transition_duration)
+            elif img_config.transition == TransitionType.CROSSFADE:
+                # Crossfade will be handled during clip concatenation
+                pass
+
+        return img_clip
+
+    except Exception as e:
+        logging.error(f"Error processing image {img_config.path}: {str(e)}")
+        raise
 
 
-def process_image_clip(image_path, duration, video_size):
-    img_clip = mpy.ImageClip(image_path)
-    img_clip = img_clip.resize(height=video_size[1])  # Resize maintaining aspect ratio
-    img_clip = img_clip.crop(x_center=img_clip.w/2, width=video_size[0])
-    img_clip = img_clip.set_duration(duration)
-    return img_clip
-
-def create_background_music(background_music_path, video_duration, volume):
+def create_background_music(config: VideoConfig, video_duration: float) -> mpy.AudioClip:
     """
     Create background music clip with specified volume and duration.
 
     Args:
-        background_music_path (str): Path to background music file
+        config (VideoConfig): Video configuration
         video_duration (float): Total video duration
-        volume (float): Background music volume
 
     Returns:
-        mpy.AudioFileClip: Processed background music clip
+        mpy.AudioClip: Processed background music clip
     """
-    logging.info(f"Processing background music from {background_music_path}")
-    logging.info(f"Background music duration to match: {video_duration} seconds")
-    logging.info(f"Background music volume set to: {volume}")
+    logging.info(f"Processing background music from {config.background_music_path}")
 
     try:
-        background_music = mpy.AudioFileClip(background_music_path)
-
-        # Log original music details
-        logging.info(f"Original music duration: {background_music.duration} seconds")
+        background_music = mpy.AudioFileClip(config.background_music_path)
 
         # Handle music shorter than video
         if background_music.duration < video_duration:
-            logging.warning("Background music is shorter than video. Will loop or repeat.")
-            # Create a looped version of the music to match video duration
+            logging.warning("Background music is shorter than video. Will loop.")
             background_music = background_music.fx(mpy.vfx.loop, duration=video_duration)
 
         # Trim or cut music to exact video duration
         background_music = background_music.subclip(0, video_duration)
 
-        # Apply fade out and volume
-        background_music = background_music.audio_fadeout(3).volumex(volume)
+        # Apply fade effects and volume
+        background_music = (background_music
+                            .audio_fadein(2)
+                            .audio_fadeout(3)
+                            .volumex(config.background_music_volume))
 
-        logging.info(f"Final background music duration: {background_music.duration} seconds")
         return background_music
 
     except Exception as e:
-        logging.error(f"Error processing background music: {e}")
+        logging.error(f"Error processing background music: {str(e)}")
         raise
 
 
-def create_video(config):
+def create_video(config: VideoConfig) -> str:
     """
     Main video creation process.
 
     Args:
-        config (dict): Configuration settings
+        config (VideoConfig): Video configuration
 
     Returns:
         str: Path to the created video
     """
-    # Setup and validation
-    setup_logging()
     start_time = time.time()
 
-    # Extract configuration
-    image_folder = config['image_folder']
-    output_video_path = config['output_video_path']
-    background_music_path = config['background_music_path']
-    durations_per_image = config['durations_per_image']
-    video_size = tuple(config['video_size'])
-    background_music_volume = config['background_music_volume']
-
-    # Prepare directories and files
-    ensure_output_directory(os.path.dirname(output_video_path))
-    image_files = get_image_files(image_folder)
-
-    # Validate image and duration counts
-    if len(durations_per_image) != len(image_files):
-        raise ValueError("The number of image files and durations must match.")
-
-    # Process image clips in parallel
-    logging.info("Processing image clips")
-    with ThreadPoolExecutor() as executor:
-        video_clips = list(executor.map(
-            lambda x: process_image_clip(x[0], x[1], video_size),
-            zip(image_files, durations_per_image)
-        ))
-
-    # Concatenate video clips
-    logging.info("Concatenating image clips")
-    final_video = mpy.concatenate_videoclips(video_clips, method="compose")
-
-    # Add background music
-    logging.info("Adding background music")
     try:
-        background_music = create_background_music(
-            background_music_path,
-            final_video.duration,
-            background_music_volume
+        # Validate images
+        validate_image_paths(config)
+
+        # Prepare output directory
+        os.makedirs(os.path.dirname(config.output_video_path), exist_ok=True)
+
+        # Process image clips in parallel
+        logging.info("Processing image clips")
+        with ThreadPoolExecutor(max_workers=config.threads) as executor:
+            video_clips = list(executor.map(
+                lambda x: process_image_clip(x, config.video_size),
+                config.images
+            ))
+
+        # Concatenate clips with transitions
+        logging.info("Concatenating clips with transitions")
+        if any(img.transition == TransitionType.CROSSFADE for img in config.images):
+            final_video = mpy.concatenate_videoclips(
+                video_clips,
+                method="crossfadein",
+                crossfadein=1.0
+            )
+        else:
+            final_video = mpy.concatenate_videoclips(
+                video_clips,
+                method="compose"
+            )
+
+        # Add background music
+        background_music = create_background_music(config, final_video.duration)
+        final_video = final_video.set_audio(background_music)
+
+        # Export final video
+        logging.info(f"Exporting video to {config.output_video_path}")
+        final_video.write_videofile(
+            config.output_video_path,
+            fps=config.fps,
+            codec=config.codec,
+            audio_codec=config.audio_codec,
+            bitrate=config.bitrate,
+            audio_bitrate=config.audio_bitrate,
+            threads=config.threads,
+            preset='medium',
+            logger=None  # Suppress moviepy's internal logging
         )
 
-        # Create composite audio clip
-        logging.info("Creating composite audio clip")
-        final_audio = mpy.CompositeAudioClip([background_music])
+        duration = time.time() - start_time
+        logging.info(f"Video created successfully. Processing time: {duration:.2f} seconds")
 
-        # Set audio to video
-        logging.info("Setting background music to video")
-        final_video = final_video.set_audio(final_audio)
+        return config.output_video_path
 
     except Exception as e:
-        logging.error(f"Failed to add background music: {e}")
+        logging.error(f"Error creating video: {str(e)}")
         raise
-
-    # Export final video
-    logging.info(f"Exporting video to {output_video_path}")
-    final_video.write_videofile(output_video_path, fps=24, threads=8)
-
-    # Calculate and log processing time
-    end_time = time.time()
-    logging.info(f"Video created successfully at {output_video_path}")
-    logging.info(f"Total processing time: {end_time - start_time:.2f} seconds")
-
-    return output_video_path
 
 
 if __name__ == "__main__":
@@ -197,9 +310,17 @@ if __name__ == "__main__":
     Main entry point of the script.
     """
     try:
+        # Setup logging with file output
+        setup_logging("logs/video_creator.log")
+
+        # Load and validate configuration
         config_path = 'config/make-shorts-using-images-and-bgmusic.json'
         config = load_configuration(config_path)
-        create_video(config)
+
+        # Create video
+        output_path = create_video(config)
+        logging.info(f"Video created at: {output_path}")
+
     except Exception as e:
-        logging.error(f"An error occurred: {e}")
+        logging.error(f"Fatal error: {str(e)}")
         raise

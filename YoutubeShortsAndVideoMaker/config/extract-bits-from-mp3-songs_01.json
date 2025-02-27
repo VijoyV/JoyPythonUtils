@@ -1,0 +1,10 @@
+{
+  "output_path": "./mp3-4-shorts/NITHYA_SAHAYA_MAATHAVE_LOKA_MAATHAVE_Short.MP3",
+  "audio_segments": [
+    {
+      "path": "./mp3-songs/NITHYA_SAHAYA_MAATHAVE_LOKA_MAATHAVE.MP3",
+      "start_time": 12,
+      "end_time": 62
+    }
+  ]
+}

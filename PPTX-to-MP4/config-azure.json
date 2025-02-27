@@ -1,0 +1,23 @@
+{
+  "azure": {
+    "speech_key": "FxyOPdGurFUWa44yCa37UCrbSkDeccgkOPW56pvQaoXeTw5atIeyJQQJ99BBACGhslBXJ3w3AAAYACOGFP1E",
+    "service_region": "centralindia",
+    "tts_endpoint": "https://centralindia.tts.speech.microsoft.com/",
+    "voice": "female",
+    "rate": "0.9"
+  },
+  "pptx": {
+    "input_file": "./input/Lesson 04 - The Rattrap.pptx"
+  },
+  "output": {
+    "audio_directory": "narration-wav"
+  },
+  "video": {
+    "slides_dir": "slides",
+    "audio_dir": "narration-wav",
+    "output_video_file": "./input/Lesson 04 - The Rattrap.mp4",
+    "fps": 24,
+    "resolution": [1920, 1080],
+    "transition_duration": 2
+  }
+}

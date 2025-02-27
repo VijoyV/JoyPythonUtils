@@ -1,0 +1,36 @@
+{
+  "images": [
+    {
+      "path": "./input/mother-mary-songs-set-02/05-A regal depiction of Queen Mary, mother of Jesus, presented in a heavenly style.jpg",
+      "duration": 20,
+      "transition": "fade",
+      "transition_duration": 1.0
+    },
+    {
+      "path": "./input/mother-mary-songs-set-02/04-A depiction of Mother Mary at dusk with soft warm lighting illuminating her figure.jpg",
+      "duration": 20,
+      "transition": "fade",
+      "transition_duration": 1.0
+    },
+    {
+      "path": "./input/mother-mary-songs-set-02/06-A serene and light-colored depiction of Mother Mary of Perpetual Help holding the infant Jesus in her arms.jpg",
+      "duration": 21,
+      "transition": "fade",
+      "transition_duration": 1.0
+    }
+  ],
+  "background_music_path": "./mp3-4-shorts/NITHYA_SAHAYA_MAATHAVE_AASRITHARKKU_AASWASAM_Shorts.MP3",
+  "output_video_path": "./output/NITHYA_SAHAYA_MAATHAVE_AASRITHARKKU_AASWASAM_Shorts.MP4",
+  "video_size": [
+    1080,
+    1920
+  ],
+  "background_music_volume": 0.8,
+  "fps": 24,
+  "threads": 8,
+  "codec": "libx264",
+  "audio_codec": "aac",
+  "bitrate": "8000k",
+  "audio_bitrate": "192k",
+  "color_mode": "RGB24"
+}

@@ -1,8 +1,24 @@
 {
-    "image_folder": "./input/mother-mary-songs-set-01",
-    "background_music_path": "./mp3-4-shorts/MotherMary_Songs_Vol_01_SHORT.mp3",
-    "output_video_path": "./output/MotherMary_Songs_Vol_01_SHORT.mp4",
-    "durations_per_image": [56, 48, 48],
-    "video_size": [1080, 1920],
-    "background_music_volume": 0.8
+  "images": [
+    {
+      "path": "./input/mother-mary-songs-set-03/11 - A serene depiction of Jesus and Mother Mary together with Jesus.jpg",
+      "duration": 57,
+      "transition": "fade",
+      "transition_duration": 0.5
+    }
+  ],
+  "background_music_path": "./mp3-4-shorts/YESU_MAATHAAVE_Shorts.MP3",
+  "output_video_path": "./output/YESU_MAATHAAVE_Shorts.MP4",
+  "video_size": [
+    1080,
+    1920
+  ],
+  "background_music_volume": 0.8,
+  "fps": 24,
+  "threads": 8,
+  "codec": "libx264",
+  "audio_codec": "aac",
+  "bitrate": "8000k",
+  "audio_bitrate": "192k",
+  "color_mode": "RGB24"
 }
