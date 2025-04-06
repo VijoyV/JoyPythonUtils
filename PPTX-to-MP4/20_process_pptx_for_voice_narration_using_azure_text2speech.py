@@ -1,82 +1,42 @@
 import os
-import json
-import requests
-from pptx import Presentation
+from config_loader import load_config
+from pptx_processor import extract_and_save_text_from_pptx, read_text_from_files
+from azure_tts import synthesize_text, get_tts_headers
 
 # --- Load Configuration ---
-config_file = "config-azure.json"
-with open(config_file, "r") as f:
-    config = json.load(f)
+config = load_config("config-azure.json")
 
-# Azure TTS configuration
-speech_key = config["azure"]["speech_key"]
-service_region = config["azure"]["service_region"]
-voice_selection = config["azure"]["voice"].lower()  # "male" or "female"
-speech_rate = config["azure"]["rate"]
-
-# Read the TTS endpoint from config and build the full URL.
-# For Azure TTS, the correct endpoint is:
-#   https://<region>.tts.speech.microsoft.com/cognitiveservices/v1
-tts_endpoint = config["azure"].get("tts_endpoint", "")
-tts_url = tts_endpoint.rstrip("/") + "/cognitiveservices/v1"
-
-# PPTX and output configuration
 pptx_filename = config["pptx"]["input_file"]
-output_dir = config["output"]["audio_directory"]
+output_text_dir = config["output"]["text_directory"]
+output_audio_dir = config["output"]["audio_directory"]
+voice_selection = config["azure"]["voice"].lower()
+speech_rate = config["azure"]["rate"]
+tts_url = config["azure"]["tts_endpoint"].rstrip("/") + "/cognitiveservices/v1"
 
-# Select the appropriate voice name for English Indian accent.
-if voice_selection == "female":
-    voice_name = "en-IN-NeerjaNeural"
-else:
-    voice_name = "en-IN-PrabhatNeural"
+# Select voice for Indian English accent
+voice_name = "en-IN-NeerjaNeural" if voice_selection == "female" else "en-IN-PrabhatNeural"
 
-# Create the output directory if it does not exist.
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
+# Ensure output directories exist
+os.makedirs(output_text_dir, exist_ok=True)
+os.makedirs(output_audio_dir, exist_ok=True)
 
-# --- Set up the REST API endpoint and headers ---
-headers = {
-    "Ocp-Apim-Subscription-Key": speech_key,
-    "Content-Type": "application/ssml+xml",
-    "X-Microsoft-OutputFormat": "riff-24khz-16bit-mono-pcm",
-    "User-Agent": "PythonTTSClient"
-}
+# --- Extract and Save Text to .txt Files ---
+extract_and_save_text_from_pptx(pptx_filename, output_text_dir)
 
-def synthesize_text(text, voice_name, rate, output_path):
-    # Construct SSML as a single line with proper namespace.
-    ssml = (
-        f'<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-IN">'
-        f'<voice name="{voice_name}">'
-        f'<prosody rate="{rate}">{text}</prosody>'
-        f'</voice></speak>'
-    )
-    response = requests.post(tts_url, headers=headers, data=ssml.encode("utf-8"))
-    if response.status_code == 200:
-        with open(output_path, "wb") as audio_file:
-            audio_file.write(response.content)
-        print(f"Audio saved: {output_path}")
-    else:
-        print(f"Error synthesizing audio. Status code: {response.status_code}")
-        print(response.text)
+# --- Read Text from Stored Files ---
+slide_texts = read_text_from_files(output_text_dir)
 
-# --- Extract Text from Each Slide using python-pptx ---
-prs = Presentation(pptx_filename)
-slide_texts = []
-for idx, slide in enumerate(prs.slides, start=1):
-    texts = []
-    for shape in slide.shapes:
-        if hasattr(shape, "text") and shape.text.strip():
-            texts.append(shape.text.strip())
-    slide_text = "\n".join(texts)
-    slide_texts.append(slide_text)
-    print(f"Extracted text from slide {idx}.")
+# --- Get API headers ---
+headers = get_tts_headers(config)
 
-# --- Generate Audio for Each Slide via REST API ---
+# --- Generate Audio for Each Slide ---
 for idx, text in enumerate(slide_texts, start=1):
-    if not text:
+    if not text.strip():
         print(f"Slide {idx} is empty; skipping audio generation.")
         continue
 
-    audio_filename = os.path.join(output_dir, f"slide_{idx}.wav")
-    print(f"Generating audio for slide {idx} with speech rate {speech_rate}...")
-    synthesize_text(text, voice_name, speech_rate, audio_filename)
+    audio_filename = os.path.join(output_audio_dir, f"slide_{idx}.wav")
+    print(f"Generating audio for slide {idx}...")
+    synthesize_text(text, voice_name, speech_rate, audio_filename, tts_url, headers)
+
+print("Audio generation complete!")

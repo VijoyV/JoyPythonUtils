@@ -48,9 +48,9 @@ if __name__ == "__main__":
     warnings.filterwarnings("ignore", category=RuntimeWarning, module="moviepy")
 
     # Load the video and audio files
-    input_video_file = './input/JapamalaVideo.mp4'  # Replace with the path to your video file
+    input_video_file = 'C:/WorkArea/Judges_Chapter_11_MCQ.mp4'  # Replace with the path to your video file
     background_music_file = './bg-music/Interstellar Mood - Nico Staf.mp3'  # Replace with the path to your audio file
-    output_video_file = './output/JapamalaVideoWithMusic.mp4'  # Replace with the desired output path
+    output_video_file = 'C:/WorkArea/Judges_Chapter_11_MCQ_Final.mp4'  # Replace with the desired output path
 
     print(f'background_music_file = {background_music_file}')
 

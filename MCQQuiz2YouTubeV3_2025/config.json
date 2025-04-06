@@ -1,0 +1,6 @@
+{
+  "pptx_input_path": "./output_pptx/Judges_Chapter_11_MCQs.pptx",
+  "pptx_output_path": "./output_pptx/Judges_Chapter_11_MCQ_Narrated.pptx",
+  "slide_mp3_narration_dir" : "./narration-mp3",
+  "final_mp4_video_path" : "./output_video/Judges_Chapter_11_MCQ.mp4"
+}
