@@ -44,16 +44,24 @@ def add_silence_and_combine(audio_files, silence_duration, output_file):
             os.remove(audio_file)
 
 def process_slide(slide_no, slide, narration_output_dir):
-    """Process a slide and generate narration MP3s with silence."""
+    """Process a slide and generate narration MP3s with silence, in sorted shape name order."""
     shape_texts = []
 
-    # Extract text from all shapes that are textboxes
-    for shape in slide.shapes:
-        if hasattr(shape, 'text'):
-            shape_text = shape.text.strip()
-            if shape_text:
-                print(f"Slide {slide_no + 1} Text: {shape_text}")  # Debugging: print the text of each shape
-                shape_texts.append(shape_text)
+    # Filter shapes that have a text attribute and a name
+    text_shapes = [
+        shape for shape in slide.shapes
+        if hasattr(shape, 'text') and shape.name
+    ]
+
+    # Sort shapes by their name (alphabetically)
+    text_shapes_sorted = sorted(text_shapes, key=lambda s: s.name)
+
+    # Extract and store cleaned text
+    for shape in text_shapes_sorted:
+        shape_text = shape.text.strip()
+        if shape_text:
+            print(f"Slide {slide_no + 1} | Shape: {shape.name} | Text: {shape_text}")
+            shape_texts.append(shape_text)
 
     # Generate TTS for each text box and add to audio files list
     audio_files = []
@@ -85,7 +93,7 @@ def process_presentation_for_tts(config):
         process_slide(i, slide, narration_output_dir)
 
 if __name__ == "__main__":
-    config_file = 'config.json'
+    config_file = '02_config.json'
     config = load_config(config_file)
     if config:
         process_presentation_for_tts(config)

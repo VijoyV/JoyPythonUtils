@@ -1,0 +1,6 @@
+{
+  "pptx_input_path_v1": "./input/Judges_StudyGuide_Part_01.pptx",
+  "pptx_output_path_v2": "./output/Judges_StudyGuide_Part_01_NR.pptx",
+  "audio_files_path": "./narration-wav",
+  "audio_file_extension": ".wav"
+}

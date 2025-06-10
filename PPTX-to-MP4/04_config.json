@@ -1,0 +1,20 @@
+{
+  "output": "./output/Judges_StudyGuide_Part_01.mp4",
+  "fade_duration": 1,
+  "crossfade_duration": 1,
+  "slides": [
+    { "image": "slides/Slide1.PNG", "audio": "narration-wav/slide_1_narration.wav" },
+    { "image": "slides/Slide2.PNG", "audio": "narration-wav/slide_2_narration.wav" },
+    { "image": "slides/Slide3.PNG", "audio": "narration-wav/slide_3_narration.wav" },
+    { "image": "slides/Slide4.PNG", "audio": "narration-wav/slide_4_narration.wav" },
+    { "image": "slides/Slide5.PNG", "audio": "narration-wav/slide_5_narration.wav" },
+    { "image": "slides/Slide6.PNG", "audio": "narration-wav/slide_6_narration.wav" },
+    { "image": "slides/Slide7.PNG", "audio": "narration-wav/slide_7_narration.wav" },
+    { "image": "slides/Slide8.PNG", "audio": "narration-wav/slide_8_narration.wav" },
+    { "image": "slides/Slide9.PNG", "audio": "narration-wav/slide_9_narration.wav" },
+    { "image": "slides/Slide10.PNG", "audio": "narration-wav/slide_10_narration.wav" },
+    { "image": "slides/Slide11.PNG", "audio": "narration-wav/slide_11_narration.wav" },
+    { "image": "slides/Slide12.PNG", "audio": "narration-wav/slide_12_narration.wav" },
+    { "image": "slides/Slide13.PNG", "audio": "narration-wav/slide_13_narration.wav" }
+  ]
+}

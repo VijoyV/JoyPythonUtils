@@ -1,8 +1,0 @@
-{
-  "pptx_input_path_v1": "./input/Story of Jephthah - Bible Stories for Children.pptx",
-  "pptx_output_path_v2": "./output/Story of Jephthah - Bible Stories for Children_V2.pptx",
-  "slide_mp3_narration_dir" : "./narration-mp3",
-  "input_mp4_video_path" : "./output/Story of Jephthah - Bible Stories for Children_V2.mp4",
-  "background_music_path" : "./bg-music/Smooth and Cool - Nico Staf.mp3",
-  "final_mp4_video_path" : "./output/Story of Jephthah - Bible Stories for Children_V3.mp4"
-}

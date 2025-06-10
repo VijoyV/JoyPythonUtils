@@ -75,15 +75,15 @@ def compress_files_in_directory(input_dir, output_dir, jpg_quality=75):
 
 # Example Usage
 if __name__ == "__main__":
-    input_directory = "input_files"  # Replace with your input directory
-    output_directory = "compressed_files"  # Replace with your output directory
+    # input_directory = "input_files"  # Replace with your input directory
+    # output_directory = "compressed_files"  # Replace with your output directory
 
-    # input_file = "./Joanna-BC-Micro.jpg"  # Replace with your input directory
-    # output_file = "./Joanna-BC-Micro-Small.jpg"  # Replace with your output directory
-    input_file = "./Joanna_Aadhaar.pdf"  # Replace with your input directory
-    output_file = "./Joanna_Aadhaar_200KB.pdf"  # Replace with your output directory
-    compress_pdf(input_file, output_file)
-    jpg_quality = 25  # Adjust JPG quality as needed (default is 75)
+    input_file = "C:\\Users\\vijoy\\OneDrive\\Documents\\4_Joanna\\Photos-N-Signatures\\Vijoy-Signature.jpg"  # Replace with your input directory
+    output_file = "C:\\Users\\vijoy\\OneDrive\\Documents\\4_Joanna\\Photos-N-Signatures\\Vijoy-Signature_20kb.jpg"  # Replace with your output directory
+    # input_file = "./Joanna_Aadhaar.pdf"  # Replace with your input directory
+    # output_file = "./Joanna_Aadhaar_200KB.pdf"  # Replace with your output directory
+    # compress_pdf(input_file, output_file)
+    jpg_quality = 70  # Adjust JPG quality as needed (default is 75)
 
     # compress_files_in_directory(input_directory, output_directory, jpg_quality)
-    # compress_jpg(input_file, output_file, jpg_quality)
+    compress_jpg(input_file, output_file, jpg_quality)

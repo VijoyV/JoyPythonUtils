@@ -1,5 +1,5 @@
 import os
-from config_loader import load_config
+from azure_config_loader import load_config
 from pptx_processor import extract_and_save_text_from_pptx, read_text_from_files
 from azure_tts import synthesize_text, get_tts_headers
 

@@ -17,7 +17,7 @@ def loop_background_music(background_music, video_duration, fade_duration=3):
     looped_music = concatenate_audioclips(music_clips).subclip(0, video_duration)
     return looped_music
 
-def add_background_music(video_file, background_music_file, output_file, music_volume=0.1, fade_duration=5):
+def add_background_music(video_file, background_music_file, output_file, music_volume=0.05, fade_duration=5):
     # Load the video and the background music
     video_clip = VideoFileClip(video_file)
     background_music = AudioFileClip(background_music_file).volumex(music_volume)
@@ -47,12 +47,9 @@ if __name__ == "__main__":
     # Suppress specific warnings
     warnings.filterwarnings("ignore", category=RuntimeWarning, module="moviepy")
 
-    with open('config.json', 'r') as config_file:
-        config = json.load(config_file)
-
-    input_video_file = config.get('input_mp4_video_path')
-    background_music_file = config.get('background_music_path')
-    output_video_file = config.get('final_mp4_video_path')
+    input_video_file = "C:/WorkArea/LogosBibleQuiz_2025/Judges/PPTX/Chapter-21/Judges_Chapter_21_MCQ_Narrated.mp4"
+    background_music_file = "C:/WorkArea/LogosBibleQuiz_2025/BG-Music/Combined BG Music.mp3"
+    output_video_file = "C:/WorkArea/LogosBibleQuiz_2025/Judges/PPTX/Chapter-21/Judges_Chapter_21_MCQ_Final.mp4"
 
     print(f'background_music_file = {background_music_file}')
 

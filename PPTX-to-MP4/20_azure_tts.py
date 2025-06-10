@@ -1,6 +1,6 @@
 import requests
 import os
-from config_loader import load_config
+from azure_config_loader import load_config
 
 def get_tts_headers(config):
     """Generate headers for Azure TTS API."""

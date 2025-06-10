@@ -1,7 +1,7 @@
 import os
 import time
 import win32com.client  # Windows-only
-from config_loader import load_config
+from azure_config_loader import load_config
 
 
 def pptx_to_images(pptx_file, output_dir, image_format="png", width=1920, height=1080):
@@ -22,5 +22,5 @@ def pptx_to_images(pptx_file, output_dir, image_format="png", width=1920, height
 
 
 if __name__ == "__main__":
-    config = load_config()
-    pptx_to_images(config["pptx"]["input_file"], config["video"]["slides_dir"])
+    config = load_config("03_config.json")
+    pptx_to_images(config["input_pptx_file"], config["output_slides_dir"])

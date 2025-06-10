@@ -6,20 +6,12 @@
     "voice": "male",
     "rate": "1.0"
   },
-  "pptx": {
-    "input_file": "./input/Lesson-06-Memories of Childhood.pptx"
+  "input": {
+    "input_pptx_file": "./input/Judges_StudyGuide_Part_01.pptx",
+      "slides_for_tts": [1]
   },
-  "slides_for_tts": [2, 7],
   "output": {
     "audio_directory": "narration-wav",
     "text_directory": "narration-text"
-  },
-  "video": {
-    "slides_dir": "slides",
-    "audio_dir": "narration-wav",
-    "output_video_file": "./output/Lesson-06-Memories of Childhood.mp4",
-    "fps": 24,
-    "resolution": [1920, 1080],
-    "transition_duration": 2
   }
 }

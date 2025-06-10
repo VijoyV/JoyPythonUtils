@@ -1,0 +1,7 @@
+{
+  "pptx_input_path_v1": "./input/Judges_StudyGuide_Part_01.pptx",
+  "slide_wav_narration_dir": "./narration-wav",
+  "slide_mp3_narration_dir" : "./narration-mp3",
+  "silence_duration_ms": 2000,
+  "parallel_processing": false
+}
