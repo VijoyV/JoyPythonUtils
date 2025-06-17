@@ -20,7 +20,7 @@ def generate_tts(text, output_file):
     if not text:
         print(f"No text provided for {output_file}. Skipping TTS generation.")
         return
-    tts = gTTS(text=text, lang='en-IN')
+    tts = gTTS(text=text, lang='en')
     tts.save(output_file)
     print(f"Generated TTS audio file: {output_file}")
 

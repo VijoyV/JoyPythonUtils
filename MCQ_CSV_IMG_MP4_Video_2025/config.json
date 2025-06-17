@@ -1,0 +1,65 @@
+{
+  "csv_file": "input/questions.csv",
+  "background_image": "input/background.jpg",
+  "font_path": "fonts/calibri.ttf",
+  "image_width": 1280,
+  "image_height": 720,
+  "output_dir": "output",
+  "question": {
+    "font_size": 36,
+    "box": {
+      "x": 100,
+      "y": 80,
+      "w": 1080,
+      "h": 160
+    },
+    "background_color": "#36013f",
+    "text_color": "#ffffff"
+  },
+  "choices": {
+    "font_size": 36,
+    "box": {
+      "x": 100,
+      "y_start": 260,
+      "w": 1080,
+      "h": 60,
+      "spacing": 20
+    },
+    "background_color": "#36013f",
+    "text_color": "#ffffff",
+    "label_background_color": "#220033"
+  },
+  "answer": {
+    "font_size": 36,
+    "box": {
+      "x": 100,
+      "y": 580,
+      "w": 1080,
+      "h": 80
+    },
+    "background_color": "#36013f",
+    "text_color": "#ffffff"
+  },
+  "voice": {
+    "lang": "en",
+    "slow": false,
+    "answer_prefix": "The correct answer is",
+    "question_suffix": "Your time starts now."
+  },
+  "timing": {
+    "question_duration": 10,
+    "answer_duration": 5
+  },
+  "transition": {
+    "enabled": true,
+    "type": "fade",
+    "duration": 0.5
+  },
+  "progress_bar": {
+    "x": 100,
+    "y": 620,
+    "width": 1080,
+    "height": 60,
+    "video_path": "output/videos/progress_bar.mkv"
+  }
+}

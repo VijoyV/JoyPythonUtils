@@ -1,0 +1,14 @@
+{
+  "timer_progress_bar": {
+    "TIMER_DURATION": 10,
+    "VIDEO_SIZE": 1280,
+    "BACKGROUND_COLOR": "#36013f",
+    "FOREGROUND_COLOR": "white",
+    "DIGIT_COLOR": "yellow",
+    "DIGIT_FONT_SIZE": 14,
+    "DIGIT_FONT_TYPE": "Arial",
+    "BACKGROUND_MUSIC": "bg-music/Simple Sonata - Sir Cubworth.mp3",
+    "MUSIC_VOLUME": 0.3,
+    "FPS": 30
+  }
+}
