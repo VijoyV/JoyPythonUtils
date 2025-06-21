@@ -1,14 +1,19 @@
 {
   "timer_progress_bar": {
-    "TIMER_DURATION": 10,
-    "VIDEO_SIZE": 1280,
+    "TIMER_DURATION": 5,
+    "VIDEO_WIDTH": 1280,
+    "VIDEO_HEIGHT": 120,
     "BACKGROUND_COLOR": "#36013f",
-    "FOREGROUND_COLOR": "white",
-    "DIGIT_COLOR": "yellow",
-    "DIGIT_FONT_SIZE": 14,
+    "FOREGROUND_COLOR": "#FFFFFF",
+    "DIGIT_COLOR": "#0000FF",
+    "DIGIT_FONT_SIZE": 48,
     "DIGIT_FONT_TYPE": "Arial",
-    "BACKGROUND_MUSIC": "bg-music/Simple Sonata - Sir Cubworth.mp3",
+    "BAR_HEIGHT_RATIO": 0.9,
+    "SHOW_SECONDS_ONLY": true,
+    "BACKGROUND_MUSIC": "bg-music/Helium - TrackTribe.mp3",
     "MUSIC_VOLUME": 0.3,
-    "FPS": 30
+    "FADEOUT_DURATION": 3,
+    "FPS": 30,
+    "OUTPUT_PATH": "output/prog-bar-video/progress_bar.mkv"
   }
 }

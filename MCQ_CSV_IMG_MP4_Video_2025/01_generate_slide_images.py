@@ -36,7 +36,7 @@ ANSWER_COLOR = config["answer"]["text_color"]
 os.makedirs(os.path.join(OUTPUT_DIR, "images"), exist_ok=True)
 
 # === Helper: Draw wrapped text inside a box ===
-def draw_text_box(draw, text, font, box, fill_bg, fill_fg, padding=10):
+def draw_text_box(draw, text, font, box, fill_bg, fill_fg, padding=10, line_spacing=1.0):
     x, y, w, h = box["x"], box["y"], box["w"], box["h"]
     draw.rectangle([x, y, x + w, y + h], fill=fill_bg)
 
@@ -57,13 +57,14 @@ def draw_text_box(draw, text, font, box, fill_bg, fill_fg, padding=10):
     if line:
         lines.append(line)
 
-    # Line height and vertical centering
+    # Line height and vertical spacing
     line_height = font.getbbox("Ay")[3] - font.getbbox("Ay")[1]
-    total_height = len(lines) * line_height
+    line_gap = int(line_height * line_spacing)
+    total_height = len(lines) * line_gap
     start_y = y + (h - total_height) // 2
 
     for i, line in enumerate(lines):
-        draw.text((x + padding, start_y + i * line_height), line, font=font, fill=fill_fg)
+        draw.text((x + padding, start_y + i * line_gap), line, font=font, fill=fill_fg)
 
 # === Helper: Draw a choice label and its text ===
 def draw_choice_with_label_box(draw, label, text, font, base_x, base_y, box_w, box_h, label_bg, text_bg, text_fg, spacing=10):
@@ -103,17 +104,18 @@ def generate_images():
             font_a = ImageFont.truetype(FONT_PATH, ANSWER_FONT_SIZE)
 
             # Question
-            draw_text_box(draw, row["Question"], font_q, QUESTION_BOX, QUESTION_BG, QUESTION_COLOR)
+            draw_text_box(draw, row["Question"], font_q, QUESTION_BOX, QUESTION_BG, QUESTION_COLOR, line_spacing=1.5)
 
             # Choices
             y = CHOICE_BOX["y_start"]
             for opt in ["A", "B", "C", "D"]:
                 label = f"Option {opt}"
                 if label in row:
+                    option_text = row[label].split('.', 1)[-1].strip()  # Strip "A.", "B." etc.
                     draw_choice_with_label_box(
                         draw,
                         f"[{opt}]",
-                        row[label],
+                        option_text,
                         font_c,
                         CHOICE_BOX["x"],
                         y,

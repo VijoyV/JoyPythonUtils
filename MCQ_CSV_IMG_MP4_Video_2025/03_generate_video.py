@@ -146,8 +146,8 @@ def generate_videos():
 
             # ✅ Append to video.txt in order
             with open(video_list_path, "a", encoding="utf-8") as vlist:
-                vlist.write(f"file '{os.path.basename(out_q)}'\n")
-                vlist.write(f"file '{os.path.basename(out_a)}'\n")
+                vlist.write(f"{os.path.basename(out_q)}\n")
+                vlist.write(f"{os.path.basename(out_a)}\n")
 
 if __name__ == "__main__":
     generate_videos()

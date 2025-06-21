@@ -1,7 +1,0 @@
-{
-  "pptx_input_path": "./output_pptx/Sirach_Chapter_41_MCQ.pptx",
-  "pptx_output_path": "./output_pptx/Sirach_Chapter_41_MCQ_VO.pptx",
-  "slide_mp3_narration_dir" : "./narration-mp3",
-  "slide_wav_narration_dir" : "./narration-wav",
-  "audio_format": "wav"
-}

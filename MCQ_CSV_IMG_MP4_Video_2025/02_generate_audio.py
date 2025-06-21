@@ -59,11 +59,12 @@ def generate_slide_audio():
             for label in option_labels:
                 opt_text = row.get(label, "").strip()
                 if opt_text:
-                    label_letter = label.split()[-1]  # Extract A/B/C/D
-                    opt_audio = generate_gtts_wav(f"{label_letter}. {opt_text}", lang=VOICE_LANG, slow=VOICE_SLOW)
+                    # label_letter = label.split()[-1]  # Extract A/B/C/D
+                    # opt_audio = generate_gtts_wav(f"{label_letter}. {opt_text}", lang=VOICE_LANG, slow=VOICE_SLOW)
+                    opt_audio = generate_gtts_wav(f"{opt_text}", lang=VOICE_LANG, slow=VOICE_SLOW)
                     combined_options_audio += opt_audio + AudioSegment.silent(duration=SILENCE_BETWEEN_OPTIONS)
 
-            # 3. Add suffix "Your time starts now."
+            # 3. Add suffix "Your time start now."
             suffix_audio = generate_gtts_wav(SUFFIX_TEXT, lang=VOICE_LANG, slow=VOICE_SLOW)
 
             # Combine all

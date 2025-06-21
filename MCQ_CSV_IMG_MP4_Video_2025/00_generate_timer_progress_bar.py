@@ -2,37 +2,45 @@ import json
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from moviepy.editor import VideoClip, AudioFileClip, CompositeAudioClip
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.font_manager import FontProperties
+from moviepy.editor import VideoClip, AudioFileClip
 import moviepy.audio.fx.all as afx
-from matplotlib.font_manager import FontProperties  # For custom fonts
-# Function to generate a video frame
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas  # Add this import
 
-# Load configuration from config.json
-with open('config_pg_bar.json', 'r') as config_file:
-    config = json.load(config_file)
+# === Load configuration ===
+with open('config_pg_bar.json', 'r') as f:
+    config = json.load(f)["timer_progress_bar"]
 
-TIMER_DURATION = config["timer_progress_bar"]["TIMER_DURATION"]
-VIDEO_SIZE = config["timer_progress_bar"]["VIDEO_SIZE"]
-BACKGROUND_COLOR = config["timer_progress_bar"]["BACKGROUND_COLOR"]
-FOREGROUND_COLOR = config["timer_progress_bar"]["FOREGROUND_COLOR"]
-DIGIT_COLOR = config["timer_progress_bar"]["DIGIT_COLOR"]
-DIGIT_FONT_SIZE = config["timer_progress_bar"]["DIGIT_FONT_SIZE"]
-DIGIT_FONT_TYPE = config["timer_progress_bar"]["DIGIT_FONT_TYPE"]
-BACKGROUND_MUSIC = config["timer_progress_bar"]["BACKGROUND_MUSIC"]
-FPS = config["timer_progress_bar"]["FPS"]
+# === Configuration Variables ===
+TIMER_DURATION = config["TIMER_DURATION"]
+WIDTH = config["VIDEO_WIDTH"]
+HEIGHT = config["VIDEO_HEIGHT"]
+BAR_HEIGHT_RATIO = config.get("BAR_HEIGHT_RATIO", 0.9)
+BACKGROUND_COLOR = config["BACKGROUND_COLOR"]
+FOREGROUND_COLOR = config["FOREGROUND_COLOR"]
+DIGIT_COLOR = config["DIGIT_COLOR"]
+DIGIT_FONT_SIZE = config["DIGIT_FONT_SIZE"]
+DIGIT_FONT_TYPE = config["DIGIT_FONT_TYPE"]
+SHOW_SECONDS_ONLY = config.get("SHOW_SECONDS_ONLY", True)
+BACKGROUND_MUSIC = config["BACKGROUND_MUSIC"]
+MUSIC_VOLUME = config["MUSIC_VOLUME"]
+FADEOUT_DURATION = config.get("FADEOUT_DURATION", 3)
+FPS = config["FPS"]
+OUTPUT_FILE = config["OUTPUT_PATH"]
 
+# === DPI & Video Size in Inches ===
 DPI = 300
-MUSIC_VOLUME = config["timer_progress_bar"]["MUSIC_VOLUME"]
-FADEOUT_DURATION = 3
+figsize = (WIDTH / DPI, HEIGHT / DPI)
 
-
+# === Frame Generator ===
 def make_frame(t):
     progress = t / TIMER_DURATION
 
-    fig = plt.figure(figsize=(VIDEO_SIZE / DPI, VIDEO_SIZE / DPI / 12), dpi=DPI)
+    # Setup figure with custom face color to match background
+    fig = plt.figure(figsize=figsize, dpi=DPI, facecolor=BACKGROUND_COLOR)
     canvas = FigureCanvas(fig)
     ax = fig.add_subplot(111)
+    ax.set_facecolor(BACKGROUND_COLOR)
 
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
@@ -42,18 +50,28 @@ def make_frame(t):
     for spine in ax.spines.values():
         spine.set_visible(False)
 
-    ax.barh(0.5, 1, height=0.9, color=BACKGROUND_COLOR, align='center')
-    ax.barh(0.5, progress, height=0.9, color=FOREGROUND_COLOR, align='center')
+    bar_height = BAR_HEIGHT_RATIO
+    ax.barh(0.5, 1, height=bar_height, color=BACKGROUND_COLOR, align='center')
+    ax.barh(0.5, progress, height=bar_height, color=FOREGROUND_COLOR, align='center')
 
-    font_properties = FontProperties(family=DIGIT_FONT_TYPE, size=DIGIT_FONT_SIZE * (VIDEO_SIZE / 800))
+    # font = FontProperties(family=DIGIT_FONT_TYPE, size=DIGIT_FONT_SIZE)
+    scaled_font_size = DIGIT_FONT_SIZE * (HEIGHT / 240)  # Adjust denominator for scaling
+    font = FontProperties(family=DIGIT_FONT_TYPE, size=scaled_font_size)
     time_left = max(0, TIMER_DURATION - t)
-    ax.text(0.5, 0.4, f"{int(time_left)}", ha='center', va='center', color=DIGIT_COLOR, fontproperties=font_properties)
+
+
+    if SHOW_SECONDS_ONLY:
+        time_text = f"{int(time_left)}"
+    else:
+        mins = int(time_left) // 60
+        secs = int(time_left) % 60
+        time_text = f"{mins:02d}:{secs:02d}"
+
+    ax.text(0.5, 0.4, time_text, ha='center', va='center', color=DIGIT_COLOR, fontproperties=font)
 
     plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
 
     canvas.draw()
-
-    # 🔧 Get renderer and reshape the RGBA buffer correctly
     renderer = canvas.get_renderer()
     width, height = canvas.get_width_height()
     buf = np.frombuffer(renderer.buffer_rgba(), dtype='uint8')
@@ -62,10 +80,10 @@ def make_frame(t):
     plt.close(fig)
     return img
 
-# Create video clip
+# === Generate Animation ===
 animation = VideoClip(make_frame, duration=TIMER_DURATION)
 
-# Load background audio if available
+# === Add Background Music if exists ===
 if BACKGROUND_MUSIC and os.path.exists(BACKGROUND_MUSIC):
     audio = AudioFileClip(BACKGROUND_MUSIC).subclip(0, TIMER_DURATION).volumex(MUSIC_VOLUME)
     audio = audio.fx(afx.audio_fadeout, FADEOUT_DURATION)
@@ -73,18 +91,16 @@ if BACKGROUND_MUSIC and os.path.exists(BACKGROUND_MUSIC):
 else:
     print("⚠️ No valid background music file found. Proceeding without audio.")
 
-# Ensure output directory exists
-output_path = "output/videos"
-os.makedirs(output_path, exist_ok=True)
+# === Ensure Output Directory Exists ===
+os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
 
-# Save as MKV
-output_filename = os.path.join(output_path, "progress_bar.mkv")
+# === Write to File ===
 animation.write_videofile(
-    output_filename,
+    OUTPUT_FILE,
     fps=FPS,
-    codec="libx264",        # mkv-compatible codec
-    audio_codec="aac",      # or "libvorbis" for higher quality in mkv
+    codec="libx264",
+    audio_codec="aac",
     bitrate="5000k"
 )
 
-print(f"✅ Timer video saved as {output_filename}")
+print(f"✅ Timer video saved as {OUTPUT_FILE}")

@@ -1,7 +1,7 @@
 {
-    "INPUT_CSV": "C:\\WorkArea\\LogosBibleQuiz_2025\\Sirach\\CSV-QuestionBank\\Chapter-41.csv",
-    "OUTPUT_PPTX": "./output_pptx/Sirach_Chapter_41_MCQ.pptx",
-    "BACKGROUND_IMAGE": "./bg_images/PPTX_BG_13.jpg",
+    "INPUT_CSV": "C:\\WorkArea\\LogosBibleQuiz_2025\\Sirach\\CSV-QuestionBank\\Chapter-42.csv",
+    "OUTPUT_PPTX": "./output_pptx/Sirach_Chapter_42_MCQ.pptx",
+    "BACKGROUND_IMAGE": "./bg_images/PPTX_BG_12.jpg",
     "FONT_NAME": "Arial",
     "FONT_SIZE_QUESTION": 32,
     "FONT_SIZE_OPTION": 32,
@@ -11,9 +11,9 @@
     "QUESTION_TEXT_COLOR": "white",
     "QUESTION_BG_COLOR": "royalblue",
     "OPTION_TEXT_COLOR": "white",
-    "OPTION_BG_COLOR": "blue",
-    "ANSWER_TEXT_COLOR": "yellow",
-    "ANSWER_BG_COLOR": "purple",
+    "OPTION_BG_COLOR": "lightblue",
+    "ANSWER_TEXT_COLOR": "black",
+    "ANSWER_BG_COLOR": "violet",
     "USE_BACKGROUND_FILL": {
         "question": false,
         "options": false,

@@ -1,6 +1,6 @@
 {
-  "csv_file": "input/questions.csv",
-  "background_image": "input/background.jpg",
+  "csv_file": "input/questions-countries.csv",
+  "background_image": "assets/template_slide.png",
   "font_path": "fonts/calibri.ttf",
   "image_width": 1280,
   "image_height": 720,
@@ -13,8 +13,8 @@
       "w": 1080,
       "h": 160
     },
-    "background_color": "#36013f",
-    "text_color": "#ffffff"
+    "background_color": "#DAB1DA",
+    "text_color": "#0a0000"
   },
   "choices": {
     "font_size": 36,
@@ -25,9 +25,9 @@
       "h": 60,
       "spacing": 20
     },
-    "background_color": "#36013f",
-    "text_color": "#ffffff",
-    "label_background_color": "#220033"
+    "background_color": "#CF9FFF",
+    "text_color": "#00000f",
+    "label_background_color": "#DAB1DA"
   },
   "answer": {
     "font_size": 36,
@@ -37,14 +37,14 @@
       "w": 1080,
       "h": 80
     },
-    "background_color": "#36013f",
+    "background_color": "#310131",
     "text_color": "#ffffff"
   },
   "voice": {
     "lang": "en",
     "slow": false,
-    "answer_prefix": "The correct answer is",
-    "question_suffix": "Your time starts now."
+    "answer_prefix": "Answer.",
+    "question_suffix": "Your time start now."
   },
   "timing": {
     "question_duration": 10,
@@ -52,14 +52,22 @@
   },
   "transition": {
     "enabled": true,
-    "type": "fade",
-    "duration": 0.5
+    "type": "crossfade",
+    "duration": 1.5
   },
+  "crossfade_duration": 1.5,
   "progress_bar": {
     "x": 100,
-    "y": 620,
+    "y": 580,
     "width": 1080,
-    "height": 60,
-    "video_path": "output/videos/progress_bar.mkv"
-  }
+    "height": 80,
+    "video_path": "output/prog-bar-video/progress_bar.mkv"
+  },
+  "start_slide": "assets/slide_start.png",
+  "end_slide": "assets/slide_end.png",
+  "start_end_background_music": "bg-music/Amazement - Freedom Trail Studio.mp3",
+  "start_end_music_volume": 0.1,
+  "video_list_mode": "auto",
+  "video_directory": "output",
+  "video_list_file": "video.txt"
 }
